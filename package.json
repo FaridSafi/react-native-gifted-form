@@ -1,0 +1,35 @@
+{
+  "name": "react-native-gifted-form",
+  "version": "0.0.1",
+  "description": "Form component for react-native",
+  "main": "GiftedForm.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FaridSafi/react-native-gifted-form.git"
+  },
+  "keywords": [
+    "form",
+    "react-component",
+    "react-native",
+    "ios",
+    "android"
+  ],
+  "author": "Farid from Safi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/FaridSafi/react-native-gifted-form/issues"
+  },
+  "homepage": "https://github.com/FaridSafi/react-native-gifted-form#readme",
+  "dependencies": {
+    "apsl-react-native-button": "git+https://github.com/FaridSafi/apsl-react-native-button.git",
+    "moment": "^2.10.6",
+    "react-native-button": "^1.2.1",
+    "react-native-gifted-spinner": "0.0.3",
+    "react-native-google-places-autocomplete": "^1.1.6",
+    "react-timer-mixin": "^0.13.3",
+    "validator": "^4.4.0"
+  }
+}
