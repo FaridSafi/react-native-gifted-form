@@ -293,7 +293,7 @@ var Component = React.createClass({
 - DayPickerWidget (Not ready for production) - A cross platform date picker. If you want to use it please submit a PR with ISO weeks support (weeks starting on monday) and a prop to set the years range
 
 
-- See the sources for props details
+See the sources for props details
 
 
 ### Your own widget
