@@ -274,6 +274,11 @@ var Component = React.createClass({
 ```
 
 
+### Installation
+
+```npm install react-native-gifted-form --save```
+
+
 ### Available widgets
 - TextInputWidget - A text input
 - TextAreaWidget - A text area
