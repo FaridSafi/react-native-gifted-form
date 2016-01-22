@@ -20,7 +20,7 @@ var Component = React.createClass({
           navigator.push(route); // The ModalWidget will be opened using this method. Tested with ExNavigator
         }}
       
-        clearOnClose: false, // delete the values of the form when unmounted
+        clearOnClose={false} // delete the values of the form when unmounted
       
         defaults={{
           /*
