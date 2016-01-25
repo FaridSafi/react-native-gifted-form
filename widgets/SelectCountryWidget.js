@@ -1909,6 +1909,7 @@ module.exports = React.createClass({
   
   doSearch(text) {
     // console.log(text);
+    this.setState({search: text});
     this.updateRows(text);
   },
   
