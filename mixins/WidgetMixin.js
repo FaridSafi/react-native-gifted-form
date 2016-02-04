@@ -179,13 +179,17 @@ module.exports = {
         />
       );
     } else if (this.props.image !== null) {
-      return (
-        <Image
-          style={this.getStyle('rowImage')}
-          resizeMode={Image.resizeMode.contain}
-          source={this.props.image}
-        />
-      );
+      if (typeof this.props.image == 'object') {
+        return(this.props.image);
+      } else {
+        return (
+          <Image
+            style={this.getStyle('rowImage')}
+            resizeMode={Image.resizeMode.contain}
+            source={this.props.image}
+          />
+        );
+      }
     }
     return null;
   },
