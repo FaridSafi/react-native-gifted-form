@@ -4,6 +4,10 @@ Form component for React-Native
 
 ![](https://raw.githubusercontent.com/FaridSafi/react-native-gifted-form/master/capture/signup.gif)
 
+### Changelog
+
+- 0.0.2 Add support of react-native-vector-icons - PR @danielweinmann - See https://github.com/FaridSafi/react-native-gifted-form/pull/9
+- 0.0.1 Initial
 
 ### Example
 

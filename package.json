@@ -1,6 +1,6 @@
 {
   "name": "react-native-gifted-form",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Form component for react-native",
   "main": "GiftedForm.js",
   "scripts": {

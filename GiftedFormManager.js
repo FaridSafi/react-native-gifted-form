@@ -199,7 +199,7 @@ class Manager {
   // reset only the values
   // useful if the GiftedForm is not unmounted
   resetValues(formName) {
-    this.handleReset(formName);
+    this.handleResetValues(formName);
   }
   
   clearSelect(formName, name) {
