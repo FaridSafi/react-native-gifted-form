@@ -89,11 +89,13 @@ module.exports = {
   },
   
   _renderContainerView() {
+    var formStyles = this.props.formStyles;
+    var viewStyle = [(this.props.isModal === false ? [styles.containerView, formStyles.containerView] : [styles.modalView, formStyles.modalView]), this.props.style];
     if (this.props.scrollEnabled === true) {
       return (
         <ScrollView
           ref='container'
-          style={[(this.props.isModal === false ? styles.containerView : styles.modalView), this.props.style]}
+          style={viewStyle}
           automaticallyAdjustContentInsets={false}
           keyboardDismissMode='on-drag'
           keyboardShouldPersistTaps={true}
@@ -111,7 +113,7 @@ module.exports = {
     return (
       <View
         ref='container'
-        style={[(this.props.isModal === false ? styles.containerView : styles.modalView), this.props.style]}
+        style={viewStyle}
         keyboardDismissMode='on-drag' // its working on View ?
 
         {...this.props}
