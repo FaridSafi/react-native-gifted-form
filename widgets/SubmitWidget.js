@@ -19,18 +19,20 @@ module.exports = React.createClass({
       type: 'SubmitWidget',
       onSubmit: () => {},
       preSubmit: () => {},
+      isDisabled: false,
     };
   },
   
   propTypes: {
     onSubmit: React.PropTypes.func,
     preSubmit: React.PropTypes.func,
+    isDisabled: React.PropTypes.bool,
   },
   
   getInitialState() {
     return {
       isLoading: false,
-      isDisabled: false,
+      isDisabled: this.props.isDisabled,
       errors: '',
     };
   },
