@@ -32,7 +32,6 @@ module.exports = React.createClass({
   getInitialState() {
     return {
       isLoading: false,
-      isDisabled: this.props.isDisabled,
       errors: '',
     };
   },
@@ -121,7 +120,7 @@ module.exports = React.createClass({
           textStyle={this.getStyle('textSubmitButton')}
       
           isLoading={this.state.isLoading}
-          isDisabled={this.state.isDisabled}
+          isDisabled={this.props.isDisabled}
       
           {...this.props}
       
