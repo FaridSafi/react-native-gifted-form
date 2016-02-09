@@ -19,18 +19,19 @@ module.exports = React.createClass({
       type: 'SubmitWidget',
       onSubmit: () => {},
       preSubmit: () => {},
+      isDisabled: false,
     };
   },
   
   propTypes: {
     onSubmit: React.PropTypes.func,
     preSubmit: React.PropTypes.func,
+    isDisabled: React.PropTypes.bool,
   },
   
   getInitialState() {
     return {
       isLoading: false,
-      isDisabled: false,
       errors: '',
     };
   },
@@ -119,7 +120,7 @@ module.exports = React.createClass({
           textStyle={this.getStyle('textSubmitButton')}
       
           isLoading={this.state.isLoading}
-          isDisabled={this.state.isDisabled}
+          isDisabled={this.props.isDisabled}
       
           {...this.props}
       
