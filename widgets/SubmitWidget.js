@@ -118,6 +118,7 @@ module.exports = React.createClass({
           ref='submitButton'
           style={this.getStyle('submitButton')}
           textStyle={this.getStyle('textSubmitButton')}
+          disabledStyle={this.getStyle('disabledSubmitButton')}
       
           isLoading={this.state.isLoading}
           isDisabled={this.props.isDisabled}
@@ -139,6 +140,9 @@ module.exports = React.createClass({
       borderWidth: 0,
       borderRadius: 0,
       height: 40,
+    },
+    disabledSubmitButton: {
+      opacity: 0.5,
     },
     textSubmitButton: {
       color: 'white',
