@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/FaridSafi/react-native-gifted-form#readme",
   "dependencies": {
-    "apsl-react-native-button": "git+https://github.com/FaridSafi/apsl-react-native-button.git",
+    "apsl-react-native-button": "^2.4.2",
     "moment": "^2.10.6",
     "react-native-button": "^1.2.1",
     "react-native-gifted-spinner": "0.0.3",
