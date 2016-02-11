@@ -7,6 +7,8 @@ var {
   Dimensions
 } = React;
 
+var GiftedFormManager = require('../GiftedFormManager');
+
 module.exports = {
   
   propTypes: {
@@ -65,13 +67,20 @@ module.exports = {
     }
   },
 
-  componentWillMount() {
-    this._childrenWithProps = React.Children.map(this.props.children, (child) => {      
+  handleValidation() {
+    if (!this.props.onValidation) return;
+    var validation = GiftedFormManager.validate(this.props.formName);
+    this.props.onValidation(validation);
+  },
+
+  childrenWithProps() {
+    return React.Children.map(this.props.children, (child) => {
       return React.cloneElement(child, {
         formStyles: this.props.formStyles,
         openModal: this.props.openModal,
         formName: this.props.formName,
         navigator: this.props.navigator,
+        onValidation: this.handleValidation,
         onFocus: this.handleFocus,
         onBlur: this.handleBlur, 
       });
@@ -106,7 +115,7 @@ module.exports = {
 
           {...this.props}
         >
-          {this._childrenWithProps}
+          {this.childrenWithProps()}
         </ScrollView>
       ); 
     }
@@ -118,7 +127,7 @@ module.exports = {
 
         {...this.props}
       >
-        {this._childrenWithProps}
+        {this.childrenWithProps()}
       </View>
     );
   },

@@ -112,6 +112,7 @@ module.exports = {
             validationErrorMessage: null
           });
         }
+        this.props.onValidation && this.props.onValidation();
         // @todo set isvalid of modal children here
       }
     }
