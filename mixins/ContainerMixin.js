@@ -75,15 +75,17 @@ module.exports = {
 
   childrenWithProps() {
     return React.Children.map(this.props.children, (child) => {
-      return React.cloneElement(child, {
-        formStyles: this.props.formStyles,
-        openModal: this.props.openModal,
-        formName: this.props.formName,
-        navigator: this.props.navigator,
-        onValidation: this.handleValidation,
-        onFocus: this.handleFocus,
-        onBlur: this.handleBlur, 
-      });
+      if (!!child) {
+        return React.cloneElement(child, {
+          formStyles: this.props.formStyles,
+          openModal: this.props.openModal,
+          formName: this.props.formName,
+          navigator: this.props.navigator,
+          onValidation: this.handleValidation,
+          onFocus: this.handleFocus,
+          onBlur: this.handleBlur, 
+        });
+      }
     });
   },
   
