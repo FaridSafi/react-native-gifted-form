@@ -20,6 +20,7 @@ module.exports = React.createClass({
       onSubmit: () => {},
       preSubmit: () => {},
       isDisabled: false,
+      activityIndicatorColor: 'black',
     };
   },
   
@@ -27,6 +28,7 @@ module.exports = React.createClass({
     onSubmit: React.PropTypes.func,
     preSubmit: React.PropTypes.func,
     isDisabled: React.PropTypes.bool,
+    activityIndicatorColor: React.PropTypes.string,
   },
   
   getInitialState() {
@@ -122,6 +124,7 @@ module.exports = React.createClass({
       
           isLoading={this.state.isLoading}
           isDisabled={this.props.isDisabled}
+          activityIndicatorColor={this.props.activityIndicatorColor}
       
           {...this.props}
       
