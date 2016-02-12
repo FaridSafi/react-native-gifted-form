@@ -6,6 +6,7 @@ Form component for React-Native
 
 ### Changelog
 
+- 0.0.3 Adds activityIndicatorColor prop to SubmitWidget and Ability to disable the submit widget using onValidation prop - PR @danielweinmann - See https://github.com/FaridSafi/react-native-gifted-form/pull/17
 - 0.0.2 Add support of react-native-vector-icons - PR @danielweinmann - See https://github.com/FaridSafi/react-native-gifted-form/pull/9
 - 0.0.1 Initial
 
