@@ -26,9 +26,8 @@ module.exports = {
     // navigator: ,
     onFocus: React.PropTypes.func,
     onBlur: React.PropTypes.func,
-    // If we want to store the state elsewhere (Redux store, for instance), we can use value and onValue prop
+    // If we want to store the state elsewhere (Redux store, for instance), we can use value and Form's onValueChange prop
     value: React.PropTypes.any,
-    onValue: React.PropTypes.func,
   },
   
   getDefaultProps() {
@@ -143,7 +142,7 @@ module.exports = {
     this._setValue(value);
     this._validate(value);
 
-    this.props.onValue && this.props.onValue(value);
+    this.props.onValueChange && this.props.onValueChange();
     
     // @todo modal widgets validation - the modalwidget row should inform about validation status
   },

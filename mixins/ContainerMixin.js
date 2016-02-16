@@ -73,6 +73,12 @@ module.exports = {
     this.props.onValidation(validation);
   },
 
+  handleValueChange() {
+    if (!this.props.onValueChange) return;
+    var values = GiftedFormManager.getValues(this.props.formName);
+    this.props.onValueChange(values);
+  },
+
   childrenWithProps() {
     return React.Children.map(this.props.children, (child) => {
       if (!!child) {
@@ -81,9 +87,10 @@ module.exports = {
           openModal: this.props.openModal,
           formName: this.props.formName,
           navigator: this.props.navigator,
-          onValidation: this.handleValidation,
           onFocus: this.handleFocus,
           onBlur: this.handleBlur, 
+          onValidation: this.handleValidation,
+          onValueChange: this.handleValueChange,
         });
       }
     });
