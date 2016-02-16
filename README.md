@@ -284,7 +284,7 @@ Pass `value` prop to your widgets and `onValueChange` to your GiftedForm to stor
 
 IMPORTANT: currently only TextInputWidget and HiddenWidget support this feature. PR's are welcome for the other widgets ;)
 
-```
+```js
 import React, { AppRegistry, Component } from 'react-native'
 import { GiftedForm, GiftedFormManager } from 'react-native-gifted-form'
 
