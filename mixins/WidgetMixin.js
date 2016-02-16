@@ -69,7 +69,7 @@ module.exports = {
   },
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.value && nextProps.value !== this.props.value) {
+    if (typeof nextProps.value !== 'undefined' && nextProps.value !== this.props.value) {
       this._onChange(nextProps.value);
     }
   },
