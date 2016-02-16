@@ -161,7 +161,9 @@ module.exports = React.createClass({
         navigator: this.props.navigator,
         onFocus: this.props.onFocus,
         onBlur: this.props.onBlur,
-        
+        onValidation: this.props.onValidation,
+        onValueChange: this.props.onValueChange,
+       
         onClose: this.onClose,        
       });
     });
