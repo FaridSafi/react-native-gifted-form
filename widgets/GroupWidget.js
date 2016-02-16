@@ -16,32 +16,34 @@ module.exports = React.createClass({
     };
   },
   
-  componentWillMount() {
-    this._childrenWithProps = React.Children.map(this.props.children, (child) => {
+  render() {
+     var childrenWithProps = React.Children.map(this.props.children, (child) => {
       return React.cloneElement(child, {
         formStyles: this.props.formStyles,
         openModal: this.props.openModal,
         formName: this.props.formName,
         navigator: this.props.navigator,
         onFocus: this.props.onFocus,
-        onBlur: this.props.onBlur, 
+        onBlur: this.props.onBlur,
+        onValidation: this.props.onValidation,
       });
     });
-  },
-  
-  render() {
-    return (
-      <View>
-        <Text
-          style={this.getStyle('headerTitle')}
-          {...this.props}
-        >
-          {this.props.title.toUpperCase()}
-        </Text>
-        {this._childrenWithProps}
-        
-      </View>
-    );
+    if (this.props.title) {
+      return (
+          <View>
+            <Text
+                style={this.getStyle('headerTitle')}
+                {...this.props}
+            >
+              {this.props.title.toUpperCase()}
+            </Text>
+            {childrenWithProps}
+
+          </View>
+      );
+    } else {
+      return <View {...this.props}>{childrenWithProps}</View>
+    }
   },
   
   defaultStyles: {
