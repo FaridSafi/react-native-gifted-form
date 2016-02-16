@@ -26,6 +26,9 @@ module.exports = {
     // navigator: ,
     onFocus: React.PropTypes.func,
     onBlur: React.PropTypes.func,
+    // If we want to store the state elsewhere (Redux store, for instance), we can use value and onValue prop
+    value: React.PropTypes.string,
+    onValue: React.PropTypes.func,
   },
   
   getDefaultProps() {
@@ -45,6 +48,14 @@ module.exports = {
   },
   
   componentDidMount() {
+    // get value from prop
+    if (typeof this.props.value !== 'undefined') {
+      this.setState({
+        value: this.props.value,
+      });
+      this._validate(this.props.value);
+      return;
+    }
     // get value from store
     var formState = GiftedFormManager.stores[this.props.formName];
     if (typeof formState !== 'undefined') {
@@ -56,7 +67,13 @@ module.exports = {
       }
     }
   },
-  
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.value && nextProps.value !== this.props.value) {
+      this._onChange(nextProps.value);
+    }
+  },
+
   // get the styles by priority
   // defaultStyles < formStyles < widgetStyles
   getStyle(styleNames = []) {
@@ -128,6 +145,8 @@ module.exports = {
   _onChange(value) {
     this._setValue(value);
     this._validate(value);
+
+    this.props.onValue && this.props.onValue(value);
     
     // @todo modal widgets validation - the modalwidget row should inform about validation status
   },
