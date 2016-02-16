@@ -27,7 +27,7 @@ module.exports = {
     onFocus: React.PropTypes.func,
     onBlur: React.PropTypes.func,
     // If we want to store the state elsewhere (Redux store, for instance), we can use value and onValue prop
-    value: React.PropTypes.string,
+    value: React.PropTypes.any,
     onValue: React.PropTypes.func,
   },
   
