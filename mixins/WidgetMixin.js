@@ -50,10 +50,7 @@ module.exports = {
   componentDidMount() {
     // get value from prop
     if (typeof this.props.value !== 'undefined') {
-      this.setState({
-        value: this.props.value,
-      });
-      this._validate(this.props.value);
+      this._setValue(this.props.value);
       return;
     }
     // get value from store
