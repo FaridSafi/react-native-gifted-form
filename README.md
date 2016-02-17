@@ -278,6 +278,56 @@ var Component = React.createClass({
 });
 ```
 
+### Storing form's state elsewhere (could be used with Redux)
+
+Pass `value` prop to your widgets and `onValueChange` to your GiftedForm to store your state outside of GiftedFormManager's store.
+
+IMPORTANT: currently only TextInputWidget and HiddenWidget support this feature. PR's are welcome for the other widgets ;)
+
+```js
+import React, { AppRegistry, Component } from 'react-native'
+import { GiftedForm, GiftedFormManager } from 'react-native-gifted-form'
+
+class Form extends Component {
+  constructor(props, context) {
+    super(props, context)
+    this.state = {
+      form: {
+        fullName: 'Marco Polo',
+        tos: false,
+      }
+    }
+  }
+
+  handleValueChange(values) {
+    console.log('handleValueChange', values)
+    this.setState({ form: values })
+  }
+
+  render() {
+    const { fullName, tos, gender } = this.state.form
+    console.log('render', this.state.form)
+    return (
+      <GiftedForm
+        formName='signupForm'
+        openModal={(route) => { this.props.navigator.push(route) }}
+        onValueChange={this.handleValueChange.bind(this)}
+      >
+        <GiftedForm.TextInputWidget
+          name='fullName'
+          title='Full name'
+          placeholder='Marco Polo'
+          clearButtonMode='while-editing'
+          value={fullName}
+        />
+        <GiftedForm.HiddenWidget name='tos' value={tos} />
+      </GiftedForm>
+    )
+  }
+}
+
+AppRegistry.registerComponent('Form', () => Form)
+```
 
 ### Installation
 
