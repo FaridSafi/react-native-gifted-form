@@ -26,6 +26,7 @@ module.exports = React.createClass({
         onFocus: this.props.onFocus,
         onBlur: this.props.onBlur,
         onValidation: this.props.onValidation,
+        onValueChange: this.props.onValueChange,        
       });
     });
     if (this.props.title) {
