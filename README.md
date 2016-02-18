@@ -6,6 +6,7 @@ Form component for React-Native
 
 ### Changelog
 
+- 0.0.4 Fix ScrollWithoutAnimationTo for RN 0.19.0
 - 0.0.3 Adds activityIndicatorColor prop to SubmitWidget and Ability to disable the submit widget using onValidation prop - PR @danielweinmann - See https://github.com/FaridSafi/react-native-gifted-form/pull/17
 - 0.0.2 Add support of react-native-vector-icons - PR @danielweinmann - See https://github.com/FaridSafi/react-native-gifted-form/pull/9
 - 0.0.1 Initial
@@ -278,7 +279,7 @@ var Component = React.createClass({
 });
 ```
 
-### Storing form's state elsewhere (could be used with Redux)
+### Storing form's state elsewhere (could be used with Redux) - Beta feature
 
 Pass `value` prop to your widgets and `onValueChange` to your GiftedForm to store your state outside of GiftedFormManager's store.
 
