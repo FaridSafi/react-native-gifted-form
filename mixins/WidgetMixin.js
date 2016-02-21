@@ -106,6 +106,10 @@ module.exports = {
     return styles;
   },
   
+  focus() {
+    this.refs.input && this.refs.input.focus()
+  },
+
   _validate(value) {
     if (typeof value === 'undefined') {
       value = this.state.value;
