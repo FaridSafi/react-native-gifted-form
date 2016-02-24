@@ -21,23 +21,27 @@ module.exports = React.createClass({
       preSubmit: () => {},
       isDisabled: false,
       activityIndicatorColor: 'black',
+      requiredMessage: '{TITLE} is required',
+      notValidMessage: '{TITLE} is not valid',
     };
   },
-  
+
   propTypes: {
     onSubmit: React.PropTypes.func,
     preSubmit: React.PropTypes.func,
     isDisabled: React.PropTypes.bool,
     activityIndicatorColor: React.PropTypes.string,
+    requiredMessage: React.PropTypes.string,
+    notValidMessage: React.PropTypes.string,
   },
-  
+
   getInitialState() {
     return {
       isLoading: false,
       errors: '',
     };
   },
-  
+
   onValidationError(validated) {
     var errors = [];
     if (validated.isValid === false) {
@@ -47,9 +51,9 @@ module.exports = React.createClass({
             if (validated.results[k].hasOwnProperty(j)) {
               if (validated.results[k][j].isValid === false) {
                 if (!validated.results[k][j].value) {
-                  errors.push(validated.results[k][j].title+' is required');
+                  errors.push(this.props.requiredMessage.replace('{TITLE}', validated.results[k][j].title));
                 } else {
-                  errors.push(validated.results[k][j].message || validated.results[k][j].title+' is not valid');
+                  errors.push(validated.results[k][j].message || this.props.notValidMessage.replace('{TITLE}', validated.results[k][j].title));
                 }
                 // displaying only 1 error per widget
                 break;
