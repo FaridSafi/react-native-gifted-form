@@ -55,6 +55,7 @@ module.exports = React.createClass({
           </View>
           
           <TextInput
+            ref='input'
             style={this.getStyle(['textInput'])}
           
             {...this.props}
@@ -77,6 +78,7 @@ module.exports = React.createClass({
           {this._renderImage()}
           {this._renderTitle()}
           <TextInput
+            ref='input'
             style={this.getStyle(['textInputInline'])}
 
             {...this.props}
