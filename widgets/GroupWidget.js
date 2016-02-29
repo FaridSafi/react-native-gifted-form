@@ -17,17 +17,19 @@ module.exports = React.createClass({
   },
   
   render() {
-     var childrenWithProps = React.Children.map(this.props.children, (child) => {
-      return React.cloneElement(child, {
-        formStyles: this.props.formStyles,
-        openModal: this.props.openModal,
-        formName: this.props.formName,
-        navigator: this.props.navigator,
-        onFocus: this.props.onFocus,
-        onBlur: this.props.onBlur,
-        onValidation: this.props.onValidation,
-        onValueChange: this.props.onValueChange,        
-      });
+    var childrenWithProps = React.Children.map(this.props.children, (child) => {
+      if(!!child){
+        return React.cloneElement(child, {
+          formStyles: this.props.formStyles,
+          openModal: this.props.openModal,
+          formName: this.props.formName,
+          navigator: this.props.navigator,
+          onFocus: this.props.onFocus,
+          onBlur: this.props.onBlur,
+          onValidation: this.props.onValidation,
+          onValueChange: this.props.onValueChange,
+        });        
+      }
     });
     if (this.props.title) {
       return (
