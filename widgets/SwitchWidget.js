@@ -14,7 +14,7 @@ var GiftedSwitch = React.createClass({
   _getSwitch() {
     if (Platform.OS === 'android') {
       return (
-        <SwitchAndroid 
+        <SwitchAndroid
           {...this.props}
         />
       );
@@ -39,26 +39,29 @@ var GiftedSwitch = React.createClass({
 
 module.exports = React.createClass({
   mixins: [WidgetMixin],
-  
+
   getDefaultProps() {
     return {
       type: 'SwitchWidget',
     };
   },
-  
+
   render() {
     return (
       <View style={this.getStyle('rowContainer')}>
         <View style={this.getStyle('row')}>
           {this._renderImage()}
-      
+
           <Text numberOfLines={1} style={this.getStyle('switchTitle')}>{this.props.title}</Text>
           <View style={this.getStyle('switchAlignRight')}>
             <GiftedSwitch
               style={this.getStyle('switch')}
               {...this.props}
-        
-              onValueChange={this._onChange}
+
+              onValueChange={(value) => {
+                this._onChange(value);
+                this.props.onChange && this.props.onChange(value);
+              }}
               value={this.state.value}
             />
           </View>
@@ -67,7 +70,7 @@ module.exports = React.createClass({
       </View>
     );
   },
-  
+
   defaultStyles: {
     rowImage: {
       height: 20,
@@ -96,6 +99,6 @@ module.exports = React.createClass({
       marginRight: 10,
     },
     switch: {
-    },  
+    },
   },
 });
