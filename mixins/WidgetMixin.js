@@ -157,6 +157,7 @@ module.exports = {
       var ValidationErrorWidget = require('../widgets/ValidationErrorWidget');
       return (
         <ValidationErrorWidget
+          {...this.props}
           message={this.state.validationErrorMessage}
         />
       );
