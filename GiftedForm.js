@@ -50,6 +50,7 @@ var GiftedForm = React.createClass({
     RowWidget: RowWidget, 
     LoadingWidget: LoadingWidget, 
     HiddenWidget: HiddenWidget,
+    ValidationErrorWidget: ValidationErrorWidget,
   },
 
   getDefaultProps() {
