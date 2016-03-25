@@ -6,6 +6,7 @@ Form component for React-Native
 
 ### Changelog
 
+- 0.0.6 Allow customizing the required and not valid messages on submit button - PR @graywolf336 - See https://github.com/FaridSafi/react-native-gifted-form/commit/a82b3d3508153465e9adbd1b4a6e0ef01e1767e3
 - 0.0.5 Fix ScrollTo for RN 0.20.0
 - 0.0.4 Fix ScrollWithoutAnimationTo for RN 0.19.0
 - 0.0.3 Adds activityIndicatorColor prop to SubmitWidget and Ability to disable the submit widget using onValidation prop - PR @danielweinmann - See https://github.com/FaridSafi/react-native-gifted-form/pull/17
