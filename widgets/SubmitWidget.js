@@ -13,7 +13,7 @@ var GiftedFormManager = require('../GiftedFormManager');
 // @todo to test with validations
 module.exports = React.createClass({
   mixins: [WidgetMixin],
-  
+
   getDefaultProps() {
     return {
       type: 'SubmitWidget',
@@ -50,11 +50,8 @@ module.exports = React.createClass({
           for (var j in validated.results[k]) {
             if (validated.results[k].hasOwnProperty(j)) {
               if (validated.results[k][j].isValid === false) {
-                if (!validated.results[k][j].value) {
-                  errors.push(this.props.requiredMessage.replace('{TITLE}', validated.results[k][j].title));
-                } else {
-                  errors.push(validated.results[k][j].message || this.props.notValidMessage.replace('{TITLE}', validated.results[k][j].title));
-                }
+                let defaultMessage = !!validated.results[k][j].value ? this.props.notValidMessage : this.props.requiredMessage;
+                errors.push(validated.results[k][j].message || defaultMessage.replace('{TITLE}', validated.results[k][j].title));
                 // displaying only 1 error per widget
                 break;
               }
@@ -63,31 +60,31 @@ module.exports = React.createClass({
         }
       }
     }
-    
+
     this.setState({
       errors: errors.join('\n'),
     });
   },
-  
+
   _postSubmit(errors = []) {
     errors = !Array.isArray(errors) ? [errors] : errors;
-    
+
     this.setState({
       isLoading: false,
       errors: errors.join('\n'),
     });
   },
-  
+
   _doSubmit() {
     this.props.preSubmit();
-    
+
     this.setState({
       errors: '',
     });
-    
+
     var validationResults = GiftedFormManager.validate(this.props.formName);
     var values = GiftedFormManager.getValues(this.props.formName);
-    
+
     if (validationResults.isValid === true) {
       this.setState({
         isLoading: true,
@@ -98,7 +95,7 @@ module.exports = React.createClass({
       this.props.onSubmit(false, values, validationResults, this._postSubmit, this.props.navigator);
     }
   },
-  
+
   renderErrors() {
     if (this.state.errors.length > 0) {
       return (
@@ -111,11 +108,11 @@ module.exports = React.createClass({
             {this.state.errors}
           </Text>
         </View>
-      );      
+      );
     }
     return null;
   },
-  
+
   render() {
     return (
       <View>
@@ -125,13 +122,13 @@ module.exports = React.createClass({
           style={this.getStyle('submitButton')}
           textStyle={this.getStyle('textSubmitButton')}
           disabledStyle={this.getStyle('disabledSubmitButton')}
-      
+
           isLoading={this.state.isLoading}
           isDisabled={this.props.isDisabled}
           activityIndicatorColor={this.props.activityIndicatorColor}
-      
+
           {...this.props}
-      
+
           onPress={() => this._doSubmit()}
         >
           {this.props.title}
@@ -139,7 +136,7 @@ module.exports = React.createClass({
       </View>
     );
   },
-  
+
   defaultStyles: {
     submitButton: {
       margin: 10,
@@ -162,5 +159,5 @@ module.exports = React.createClass({
       color: '#ff0000',
     },
   },
-  
+
 });
