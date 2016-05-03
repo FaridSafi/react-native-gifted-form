@@ -7,7 +7,7 @@ var WidgetMixin = require('../mixins/WidgetMixin.js');
 var OptionWidget = require('./OptionWidget.js');
 
 // countries list from https://www.iso.org/obp/ui/#search
-var countries = 
+var countries =
 [{"name": "Afghanistan", "alpha2": "AF", "alpha3": "AFG", "numeric": 4},
 {"name": "Åland Islands", "alpha2": "AX", "alpha3": "ALA", "numeric": 248},
 {"name": "Albania", "alpha2": "AL", "alpha3": "ALB", "numeric": 8},
@@ -262,7 +262,7 @@ var countries =
 
 module.exports = React.createClass({
   mixins: [WidgetMixin],
-  
+
   statics: {
     getCountryNameByAlpha2(code) {
       for (let i = 0; i < countries.length; i++) {
@@ -1028,11 +1028,11 @@ module.exports = React.createClass({
         default:
           image = null;
       }
-      
-      return image;      
+
+      return image;
     },
   },
-  
+
   getDefaultProps() {
     return {
       type: 'SelectCountryWidget',
@@ -1047,9 +1047,9 @@ module.exports = React.createClass({
     this.props.onClose(name, this.props.navigator);
   },
 
-  
+
   // @todo image as option
-  
+
   renderRow(rowData, sectionID, rowID) {
     // react-native image asset requires static filenames
     // icons from http://www.icondrawer.com/
@@ -1809,7 +1809,7 @@ module.exports = React.createClass({
       default:
         image = null;
     }
-    
+
 
     if (image === null) {
       return (
@@ -1833,7 +1833,7 @@ module.exports = React.createClass({
                 marginRight: 10,
               }}
             />
-            
+
             <Text numberOfLines={1} style={{
               flex: 1,
             }}>{rowData.name}</Text>
@@ -1873,7 +1873,7 @@ module.exports = React.createClass({
       );
     }
   },
-  
+
   getInitialState: function() {
     var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     return {
@@ -1881,7 +1881,7 @@ module.exports = React.createClass({
       search: '',
     };
   },
-  
+
   updateRows(text = '') {
     if (text.length === 0) {
       this.setState({
@@ -1889,9 +1889,9 @@ module.exports = React.createClass({
       });
       return;
     }
-    
+
     var results = [];
-    
+
     for (let i = 0; i < countries.length; i++) {
       if (countries[i].name.toLowerCase().indexOf(text.trim().toLowerCase()) !== -1) {
         results.push(countries[i]);
@@ -1900,19 +1900,19 @@ module.exports = React.createClass({
         }
       }
     }
-    
+
     this.setState({
       dataSource: this.state.dataSource.cloneWithRows(results),
-    });  
+    });
   },
-  
-  
+
+
   doSearch(text) {
     // console.log(text);
     this.setState({search: text});
     this.updateRows(text);
   },
-  
+
   renderHeader() {
     return (
       <View
@@ -1920,21 +1920,21 @@ module.exports = React.createClass({
       >
         <TextInput
           autoFocus={this.props.autoFocus}
-        
+
           style={this.getStyle(['textInput'])}
 
           placeholder='Type a country name...'
 
           onChangeText={this.doSearch}
           value={this.state.search}
-          
+
           clearButtonMode="while-editing"
-          
+
         />
       </View>
     );
   },
-  
+
   renderSeparator() {
     return (
       <View
@@ -1951,18 +1951,18 @@ module.exports = React.createClass({
         {this.renderHeader()}
         <ListView
           style={this.getStyle(['listView'])}
-          
+
           dataSource={this.state.dataSource}
           renderRow={this.renderRow}
-        
+
           automaticallyAdjustContentInsets={false}
-        
+
           initialListSize={10}
           pageSize={10}
-        
+
           keyboardShouldPersistTaps={true}
           keyboardDismissMode="on-drag"
-        
+
           renderSeparator={this.renderSeparator}
 
         />
@@ -1970,7 +1970,7 @@ module.exports = React.createClass({
 
     );
   },
-  
+
   defaultStyles: {
     container: {
       flex: 1,
@@ -1986,7 +1986,6 @@ module.exports = React.createClass({
       borderTopWidth: 1 / PixelRatio.get(),
       borderBottomWidth: 1 / PixelRatio.get(),
     },
-    
     textInput: {
       backgroundColor: '#FFFFFF',
       height: 28,
@@ -2000,21 +1999,16 @@ module.exports = React.createClass({
       marginRight: 8,
       fontSize: 15,
     },
-    
-    
     row: {
       height: 44,
       // padding: 10,
       justifyContent: 'center',
       backgroundColor: '#fff',
     },
-
     separator: {
       height: 0.5,
       backgroundColor: '#9ba1ac',
     },
     underlayColor: '#c7c7cc',
   },
-  
-
 });

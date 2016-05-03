@@ -1,44 +1,42 @@
-'use strict';
-
-var validatorjs = require('validator'); 
+var validatorjs = require('validator');
 
 function doValidateOne(k = '', value = undefined, validators = {}) {
   var isValid = null;
   var validate = validators.validate || [];
   var result = [];
-  
+
   for (var i = 0; i < validate.length; i++) {
     if (validate[i].validator === 'undefined') { continue; }
-  
+
     var args = validate[i].arguments;
-    args = !Array.isArray(args) ? [args] : args;
+    args = !Array.isArray(args) ? [ args ] : args;
     var clonedArgs = args.slice(0);
     clonedArgs.unshift(value);
-  
-  
+
+
     validate[i].message = validate[i].message || '';
-    
+
     var message = validate[i].message.replace('{PATH}', "'"+k+"'");
-  
+
     var title = validators.title;
     if (title) {
-      message = message.replace('{TITLE}', title);            
+      message = message.replace('{TITLE}', title);
     }
-  
+
     message = message.replace(/{ARGS\[(\d+)\]}/g, function (replace, argIndex) {
       var val = args[argIndex];
       return val !== undefined ? val : '';
     });
-  
+
     if (typeof validate[i].validator === 'function') {
       isValid = validate[i].validator.apply(null, clonedArgs);
-      
+
       // handle custom validators
       result.push({
         validator: 'Custom',
-        isValid: isValid,
-        message: message,
-        value: value,
+        isValid,
+        message,
+        value,
         title: title || k,
       });
     } else {
@@ -46,23 +44,22 @@ function doValidateOne(k = '', value = undefined, validators = {}) {
         console.warn('GiftedForm Error: Validator is not correct for: '+k);
         continue;
       }
-      
+
       if (validate[i].validator === 'isLength') {
         if (typeof clonedArgs[0] === 'string') {
           clonedArgs[0] = clonedArgs[0].trim();
         }
       }
-      
+
       isValid = validatorjs[validate[i].validator].apply(null, clonedArgs);
 
       result.push({
         validator: validate[i].validator,
-        isValid: isValid,
-        message: message,
+        isValid,
+        message,
         value: clonedArgs[0],
         title: title || k,
-      });
-    }
+      });  }
   }
   return result;
 }
@@ -79,31 +76,10 @@ function doParseResult(result = [], name = '') {
   }
 
   return {
-    name: name,
-    isValid: isValid,
-    message: message,
+    name,
+    isValid,
+    message,
   };
-}
-
-function formatDates(values) {
-  var formatted = {};
-  for (var key in values) {
-    if (values.hasOwnProperty(key)) {
-      var dayPosition = key.indexOf('$day');
-      if (dayPosition !== -1) {
-        var newKey = key.substr(0, dayPosition);
-        if (Array.isArray(values[newKey+'$year']) && Array.isArray(values[newKey+'$month']) && Array.isArray(values[newKey+'$day'])) {
-          if (typeof values[newKey+'$year'][0] !== 'undefined' && typeof values[newKey+'$month'][0] !== 'undefined' && typeof values[newKey+'$day'][0] !== 'undefined') {
-            var newValue = new Date(values[newKey+'$year'][0], (values[newKey+'$month'][0]) - 1, values[newKey+'$day'][0]);
-            formatted[newKey] = newValue;
-          }
-        }
-      } else if (key.indexOf('$year') === -1 && key.indexOf('$month') === -1) {
-        formatted[key] = values[key];
-      }
-    }
-  }
-  return formatted;
 }
 
 // the select widgets values need to be formated because even when the values are 'False' they are stored
@@ -117,12 +93,9 @@ function formatValues(values) {
         if (position !== -1) {
           if (values[key] === true) {
             // Each options of SelectWidget are stored as boolean and grouped using '{' and '}'
-            // eg: the DayPickerWidget stores:
-            // birthday$year{1986} = false
-            // birthday$year{1987} = true
-            // birthday$year{1988} = false
-            // ...
-            // Note: DayPickerWidget is built on top of the SelectWidget that's why the available options are predefined and limited
+            // eg:
+            // gender{male} = true
+            // gender{female} = false
             var newKey = key.substr(0, position);
             var newValue = key.substr(position);
             newValue = newValue.replace('{', '');
@@ -144,40 +117,40 @@ function formatValues(values) {
       }
     }
   }
-  return formatDates(formatted);
+  return formatted;
 }
 
 
 class Manager {
   stores = {};
-  
+
   // ===================
   // = ACTIONS SECTION =
   // ===================
   updateValue(formName, name, value) {
     this.handleUpdateValue({
-      name: name,
-      formName: formName,
-      value: value
+      name,
+      formName,
+      value
     });
   }
-  
+
   updateValueIfNotSet(formName, name, value) {
     this.handleUpdateValueIfNotSet({
-      name: name,
-      formName: formName,
-      value: value
+      name,
+      formName,
+      value
     });
   }
-  
+
   setValidators(formName, name, validators = {}) {
     this.handleSetValidators({
-      name: name,
-      formName: formName,
-      validators: validators,
+      name,
+      formName,
+      validators,
     });
   }
-  
+
   getValidators(formName, name) {
     var state = this.stores;
     if (typeof state[formName] !== 'undefined') {
@@ -195,24 +168,24 @@ class Manager {
   reset(formName) {
     this.handleReset(formName);
   }
-  
+
   // reset only the values
   // useful if the GiftedForm is not unmounted
   resetValues(formName) {
     this.handleResetValues(formName);
   }
-  
+
   clearSelect(formName, name) {
     this.handleClearSelect({
-      name: name,
-      formName: formName,
+      name,
+      formName,
     });
   }
 
   validateAndParseOne(k = '', value = undefined, validators = {}) {
     return doParseResult(doValidateOne(k, value, validators), k);
   }
-  
+
   validate(formName) {
     var formInfo = this.stores[formName] || {};
     var validators = formInfo.validators || {};
@@ -222,37 +195,37 @@ class Manager {
       values = formatValues(this.stores[formName].values);
     } else {
       values = {};
-    }    
-    
-    var result = null;
+    }
+
     var results = {};
-    
+
     for (let k in validators) {
       if (validators.hasOwnProperty(k)) {
         results[k] = doValidateOne(k, values[k], validators[k]);
       }
     }
-    
+
     for (let k in results) {
       if (results.hasOwnProperty(k)) {
         for (let i = 0; i < results[k].length; i++) {
           if (results[k][i].isValid === true) {
+
           } else if (results[k][i].isValid === false) {
             return {isValid: false, results: results};
           }
         }
-      }      
+      }
     }
-    return {isValid: true, results: results};
+    return {isValid: true, results};
   }
-    
+
   getValues(formName) {
     if (typeof this.stores[formName] !== 'undefined') {
       return formatValues(this.stores[formName].values);
     }
     return {};
   }
-  
+
   getValue(formName, name) {
     if (typeof this.stores[formName] !== 'undefined') {
       if (typeof this.stores[formName].values === 'object') {
@@ -265,7 +238,7 @@ class Manager {
     }
     return null;
   }
-  
+
   // =================
   // = STORE SECTION =
   // =================
@@ -274,40 +247,40 @@ class Manager {
       this.stores[formName] = {values: {}, validators: {}};
     }
   }
-  
+
   handleSetValidators(obj) {
     this.initForm(obj.formName);
-    
+
     this.stores[obj.formName].validators[obj.name] = {
       validate: obj.validators.validate || [],
       title: obj.validators.title || '',
     };
   }
-  
+
   handleUpdateValue(obj) {
     this.initForm(obj.formName);
 
     this.stores[obj.formName].values[obj.name] = obj.value;
   }
-  
+
   handleReset(formName) {
     this.initForm(formName);
-    
+
     this.stores[formName] = {values: {}, validators: {}};
   }
 
   handleResetValues(formName) {
     this.initForm(formName);
-    
+
     if (typeof this.stores[formName] === 'undefined') {
       this.stores[formName] = {};
     }
     this.stores[formName].values = {};
   }
-  
+
   handleClearSelect(obj) {
     this.initForm(obj.formName);
-    
+
     for (var key in this.stores[obj.formName].values) {
       if (this.stores[obj.formName].values.hasOwnProperty(key)) {
         if (key.indexOf(obj.name) === 0) {
@@ -317,14 +290,11 @@ class Manager {
       }
     }
   }
-  
+
   handleUpdateValueIfNotSet(obj) {
     this.initForm(obj.formName);
-    
     if (typeof this.stores[obj.formName].values[obj.name] === 'undefined') {
-      console.log('obj.value');
-      console.log(obj.value);
-      this.stores[obj.formName].values[obj.name] = obj.value;      
+      this.stores[obj.formName].values[obj.name] = obj.value;
     }
   }
 }

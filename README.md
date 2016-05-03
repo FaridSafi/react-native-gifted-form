@@ -6,12 +6,9 @@ Form component for React-Native
 
 ### Changelog
 
-- 0.0.6 Allow customizing the required and not valid messages on submit button - PR @graywolf336 - See https://github.com/FaridSafi/react-native-gifted-form/commit/a82b3d3508153465e9adbd1b4a6e0ef01e1767e3
-- 0.0.5 Fix ScrollTo for RN 0.20.0
-- 0.0.4 Fix ScrollWithoutAnimationTo for RN 0.19.0
-- 0.0.3 Adds activityIndicatorColor prop to SubmitWidget and Ability to disable the submit widget using onValidation prop - PR @danielweinmann - See https://github.com/FaridSafi/react-native-gifted-form/pull/17
-- 0.0.2 Add support of react-native-vector-icons - PR @danielweinmann - See https://github.com/FaridSafi/react-native-gifted-form/pull/9
-- 0.0.1 Initial
+#### 0.0.7
+- SelectDayWidget, CellWidget and DayPickerWidget are now deprecated and will be replaced by DatePickerWidget
+
 
 ### Example
 
@@ -27,9 +24,9 @@ var Component = React.createClass({
         openModal={(route) => {
           navigator.push(route); // The ModalWidget will be opened using this method. Tested with ExNavigator
         }}
-      
+
         clearOnClose={false} // delete the values of the form when unmounted
-      
+
         defaults={{
           /*
           username: 'Farid',
@@ -39,7 +36,7 @@ var Component = React.createClass({
           birthday: new Date(((new Date()).getFullYear() - 18)+''),
           */
         }}
-  
+
         validators={{
           fullName: {
             title: 'Full name',
@@ -125,7 +122,7 @@ var Component = React.createClass({
         <GiftedForm.TextInputWidget
           name='fullName' // mandatory
           title='Full name'
-  
+
           image={require('../../assets/icons/color/user.png')}
 
           placeholder='Marco Polo'
@@ -175,9 +172,9 @@ var Component = React.createClass({
 
           image={require('../../assets/icons/color/email.png')}
         />
-    
+
         <GiftedForm.SeparatorWidget />
-    
+
         <GiftedForm.ModalWidget
           title='Gender'
           displayValue='gender'
@@ -202,7 +199,7 @@ var Component = React.createClass({
           <GiftedForm.DatePickerIOSWidget
             name='birthday'
             mode='date'
-    
+
             getDefaultDate={() => {
               return new Date(((new Date()).getFullYear() - 18)+'');
             }}
@@ -213,12 +210,12 @@ var Component = React.createClass({
           displayValue='country'
           image={require('../../assets/icons/color/passport.png')}
           scrollEnabled={false}
-    
+
         >
-          <GiftedForm.SelectCountryWidget 
-            code='alpha2' 
-            name='country' 
-            title='Country' 
+          <GiftedForm.SelectCountryWidget
+            code='alpha2'
+            name='country'
+            title='Country'
             autoFocus={true}
           />
         </GiftedForm.ModalWidget>
@@ -241,7 +238,7 @@ var Component = React.createClass({
             placeholder='Something interesting about yourself'
           />
         </GiftedForm.ModalWidget>
-      
+
 
 
         <GiftedForm.SubmitWidget
@@ -256,7 +253,7 @@ var Component = React.createClass({
               // prepare object
               values.gender = values.gender[0];
               values.birthday = moment(values.birthday).format('YYYY-MM-DD');
-      
+
               /* Implement the request to your server using values variable
               ** then you can do:
               ** postSubmit(); // disable the loader
@@ -266,10 +263,10 @@ var Component = React.createClass({
               */
             }
           }}
-    
+
         />
 
-        <GiftedForm.NoticeWidget 
+        <GiftedForm.NoticeWidget
           title='By signing up, you agree to the Terms of Service and Privacy Policity.'
         />
 
@@ -334,7 +331,7 @@ AppRegistry.registerComponent('Form', () => Form)
 
 ### Installation
 
-```npm install react-native-gifted-form --save```
+`npm install react-native-gifted-form --save`
 
 
 ### Available widgets
@@ -353,7 +350,6 @@ AppRegistry.registerComponent('Form', () => Form)
 - SwitchWidget - A switch
 - DatePickerIOSWidget - Date picker for iOS
 - NoticeWidget - A notice information - PR wanted for onPress handler
-- DayPickerWidget (Not ready for production) - A cross platform date picker. If you want to use it please submit a PR with ISO weeks support (weeks starting on monday) and a prop to set the years range
 
 
 See the sources for props details
