@@ -143,11 +143,12 @@ module.exports = {
   },
   
   _onChange(value) {
+    this.props.onChangeText && this.props.onChangeText(value); //should maintain similar API to core TextInput component
+    
     this._setValue(value);
     this._validate(value);
 
     this.props.onValueChange && this.props.onValueChange();
-    
     // @todo modal widgets validation - the modalwidget row should inform about validation status
   },
   
@@ -157,6 +158,7 @@ module.exports = {
       var ValidationErrorWidget = require('../widgets/ValidationErrorWidget');
       return (
         <ValidationErrorWidget
+          {...this.props}
           message={this.state.validationErrorMessage}
         />
       );

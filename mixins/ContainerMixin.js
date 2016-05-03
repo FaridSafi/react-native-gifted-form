@@ -94,6 +94,7 @@ module.exports = {
           formStyles: this.props.formStyles,
           openModal: this.props.openModal,
           formName: this.props.formName,
+          form: this,
           navigator: this.props.navigator,
           onFocus: this.handleFocus,
           onBlur: this.handleBlur, 
