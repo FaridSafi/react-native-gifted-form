@@ -1,13 +1,13 @@
-var React = require('react-native');
-var {
+import React from 'react';
+import {
   View,
   Text,
   TouchableHighlight,
   Navigator,
   Image,
   TouchableOpacity,
-  PixelRatio
-} = React;
+  PixelRatio,
+} from 'react-native';
 
 var WidgetMixin = require('../mixins/WidgetMixin');
 
@@ -18,7 +18,7 @@ var moment = require('moment');
 
 module.exports = React.createClass({
   mixins: [TimerMixin, WidgetMixin],
-  
+
   getDefaultProps() {
     return {
       type: 'ModalWidget',
@@ -28,7 +28,7 @@ module.exports = React.createClass({
       displayValue: '',
     };
   },
-  
+
   propTypes: {
     type: React.PropTypes.string,
     scrollEnabled: React.PropTypes.bool,
@@ -36,7 +36,7 @@ module.exports = React.createClass({
     cancelable: React.PropTypes.bool,
     displayValue: React.PropTypes.string,
   },
-  
+
   getInitialState() {
     return {
       // @todo
@@ -59,25 +59,25 @@ module.exports = React.createClass({
   },
 
   onPress() {
-    
+
     // title={this.props.title} // @todo working  ?
-    
+
     var _self = this;
-    
+
     var {
       GiftedFormModal
     } = require('../GiftedForm.js');
-    
-    
+
+
     var route = {
       renderScene(navigator) {
         // not passing onFocus/onBlur of the current scene to the new scene
         var {onFocus, onBlur, ...others} = _self.props;
-        
+
         return (
           <GiftedFormModal
             {...others}
-            
+
             navigator={navigator}
             isModal={true}
             children={_self._childrenWithProps}
@@ -107,7 +107,7 @@ module.exports = React.createClass({
                 style={{
                   width: 21,
                   marginLeft: 10,
-                  tintColor: '#097881',                
+                  tintColor: '#097881',
                 }}
                 resizeMode={Image.resizeMode.contain}
                 source={require('../icons/close.png')}
@@ -132,7 +132,7 @@ module.exports = React.createClass({
               style={{
                 width: 21,
                 marginRight: 10,
-                tintColor: '#097881',                
+                tintColor: '#097881',
               }}
               resizeMode={Image.resizeMode.contain}
               source={require('../icons/check.png')}
@@ -141,17 +141,17 @@ module.exports = React.createClass({
         );
       },
     };
-    
+
     // console.log('this.props.openModal from modal widget');
     // console.log(typeof this.props.openModal);
-    
+
     if (this.props.openModal === null) {
       console.warn('GiftedForm: openModal prop is missing in GiftedForm component');
     } else {
-      this.props.openModal(route);      
+      this.props.openModal(route);
     }
   },
-  
+
   componentWillMount() {
     this._childrenWithProps = React.Children.map(this.props.children, (child) => {
       return React.cloneElement(child, {
@@ -163,19 +163,19 @@ module.exports = React.createClass({
         onBlur: this.props.onBlur,
         onValidation: this.props.onValidation,
         onValueChange: this.props.onValueChange,
-       
-        onClose: this.onClose,        
+
+        onClose: this.onClose,
       });
     });
   },
-  
+
   componentDidMount() {
     // @todo test if its working
     this.setState({
       value: this._getDisplayableValue(),
     });
   },
-  
+
   onClose(value, navigator = null) {
     if (typeof value === 'string') {
       this.setState({
@@ -186,18 +186,18 @@ module.exports = React.createClass({
         value: this._getDisplayableValue(),
       });
     }
-    
+
     if (navigator !== null) {
       navigator.pop();
     }
   },
-  
+
   refreshDisplayableValue() {
     this.setState({
       value: this._getDisplayableValue(),
     });
   },
-  
+
   _getDisplayableValue() {
     if (this.props.displayValue !== '') {
       if (typeof GiftedFormManager.stores[this.props.formName] !== 'undefined') {
@@ -215,11 +215,11 @@ module.exports = React.createClass({
               });
             }
             if (typeof GiftedFormManager.stores[this.props.formName].values[this.props.displayValue] === 'string') {
-              return GiftedFormManager.stores[this.props.formName].values[this.props.displayValue].trim();              
+              return GiftedFormManager.stores[this.props.formName].values[this.props.displayValue].trim();
             }
           } else {
             // @todo merge with when not select menu
-            
+
             // when values[this.props.displayValue] is not found
             // probably because it's a select menu
             // options of select menus are stored using the syntax name{value}, name{value}
@@ -243,7 +243,7 @@ module.exports = React.createClass({
                     });
                   } else {
                     return values[this.props.displayValue];
-                  }                  
+                  }
                 }
               }
             }
@@ -253,7 +253,7 @@ module.exports = React.createClass({
     }
     return '';
   },
-  
+
   render() {
     return (
       <TouchableHighlight
@@ -263,9 +263,9 @@ module.exports = React.createClass({
           });
         }}
         underlayColor={this.getStyle('underlayColor').pop()}
-        
+
         {...this.props} // mainly for underlayColor
-        
+
         style={this.getStyle('rowContainer')}
       >
         <View style={this.getStyle('row')}>
@@ -279,7 +279,7 @@ module.exports = React.createClass({
       </TouchableHighlight>
     );
   },
-  
+
   defaultStyles: {
     rowImage: {
       height: 20,
