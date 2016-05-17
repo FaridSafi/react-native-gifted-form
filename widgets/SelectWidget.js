@@ -1,14 +1,14 @@
-var React = require('react-native');
-var {
-  View
-} = React;
+import React from 'react';
+import {
+  View,
+} from 'react-native';
 
 var WidgetMixin = require('../mixins/WidgetMixin.js');
 
 
 module.exports = React.createClass({
   mixins: [WidgetMixin],
-  
+
   getDefaultProps() {
     return {
       type: 'SelectWidget',
@@ -17,13 +17,13 @@ module.exports = React.createClass({
       onClose: () => {},
     };
   },
-  
+
   unSelectAll() {
     React.Children.forEach(this._childrenWithProps, (child, idx) => {
       this.refs[child.ref]._onChange(false);
     });
   },
-  
+
   render() {
     this._childrenWithProps = React.Children.map(this.props.children, (child, idx) => {
       var val = child.props.value || child.props.title;
@@ -34,10 +34,10 @@ module.exports = React.createClass({
         formName: this.props.formName,
         navigator: this.props.navigator,
         onFocus: this.props.onFocus,
-        onBlur: this.props.onBlur, 
+        onBlur: this.props.onBlur,
         onValidation: this.props.onValidation,
         onValueChange: this.props.onValueChange,
-        
+
         name: this.props.name+'{'+val+'}',
         ref: this.props.name+'{'+val+'}',
         value: val,
@@ -48,7 +48,7 @@ module.exports = React.createClass({
         onSelect: this.props.onSelect, // got from DayPickerWidget
       });
     });
-    
+
     return (
       <View>
         {this._childrenWithProps}

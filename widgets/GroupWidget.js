@@ -1,21 +1,21 @@
-var React = require('react-native');
-var {
+import React from 'react';
+import {
   View,
   Text
-} = React;
+} from 'react-native';
 
 var WidgetMixin = require('../mixins/WidgetMixin');
 
 module.exports = React.createClass({
   mixins: [WidgetMixin],
-  
+
   getDefaultProps() {
     return {
       type: 'GroupWidget',
       // @todo proptypes
     };
   },
-  
+
   render() {
     var childrenWithProps = React.Children.map(this.props.children, (child) => {
       if(!!child){
@@ -28,7 +28,7 @@ module.exports = React.createClass({
           onBlur: this.props.onBlur,
           onValidation: this.props.onValidation,
           onValueChange: this.props.onValueChange,
-        });        
+        });
       }
     });
     if (this.props.title) {
@@ -48,7 +48,7 @@ module.exports = React.createClass({
       return <View {...this.props}>{childrenWithProps}</View>
     }
   },
-  
+
   defaultStyles: {
     headerTitle: {
       fontSize: 12,
