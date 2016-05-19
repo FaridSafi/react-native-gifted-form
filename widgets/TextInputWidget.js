@@ -1,10 +1,10 @@
-var React = require('react-native');
+var React = require('react');
 var {
   View,
   Text,
   TextInput,
   PixelRatio
-} = React;
+} = require('react-native')
 
 var WidgetMixin = require('../mixins/WidgetMixin.js');
 

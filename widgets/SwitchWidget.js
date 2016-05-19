@@ -1,4 +1,4 @@
-var React = require('react-native');
+var React = require('react');
 var {
   View,
   Text,
@@ -6,7 +6,7 @@ var {
   SwitchAndroid,
   Platform,
   PixelRatio
-} = React;
+} = require('react-native')
 
 var WidgetMixin = require('../mixins/WidgetMixin.js');
 

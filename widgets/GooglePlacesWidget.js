@@ -1,4 +1,4 @@
-var React = require('react-native');
+var React = require('react');
 
 var WidgetMixin = require('../mixins/WidgetMixin.js');
 
