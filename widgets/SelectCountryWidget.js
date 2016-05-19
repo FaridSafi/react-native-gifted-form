@@ -1,7 +1,7 @@
-var React = require('react-native');
+var React = require('react');
 var {
   View, ListView, Text, TouchableHighlight, TextInput, Image, PixelRatio
-} = React;
+} = require('react-native')
 
 var WidgetMixin = require('../mixins/WidgetMixin.js');
 var OptionWidget = require('./OptionWidget.js');
