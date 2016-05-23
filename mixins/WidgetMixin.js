@@ -26,6 +26,7 @@ module.exports = {
     // navigator: ,
     onFocus: React.PropTypes.func,
     onBlur: React.PropTypes.func,
+    validateOnEmpty: React.PropTypes.bool,
     // If we want to store the state elsewhere (Redux store, for instance), we can use value and Form's onValueChange prop
     value: React.PropTypes.any,
   },
@@ -43,6 +44,7 @@ module.exports = {
       navigator: null,
       onFocus: () => {},
       onBlur: () => {},
+      validateOnEmpty: false,
     };
   },
 
@@ -154,16 +156,29 @@ module.exports = {
 
   // @todo options enable live checking
   _renderValidationError() {
-    if (!(typeof this.state.value === 'undefined' || this.state.value === '') && this.state.validationErrorMessage !== null && this.state.validationErrorMessage !== '') {
-      var ValidationErrorWidget = require('../widgets/ValidationErrorWidget');
-      return (
-        <ValidationErrorWidget
-          {...this.props}
-          message={this.state.validationErrorMessage}
-        />
-      );
+    let hasValue = typeof this.state.value !== 'undefined' && this.state.value !== '';
+
+    if (this.props.validateOnEmpty) {
+      hasValue = true;
     }
-    return null;
+
+    if (!hasValue) {
+      return null;
+    }
+
+    const hasValidationErrors = this.state.validationErrorMessage !== null && this.state.validationErrorMessage !== '';
+
+    if (!hasValidationErrors) {
+      return null;
+    }
+
+    var ValidationErrorWidget = require('../widgets/ValidationErrorWidget');
+    return (
+      <ValidationErrorWidget
+        {...this.props}
+        message={this.state.validationErrorMessage}
+      />
+    );
   },
 
   _renderImage() {
@@ -184,35 +199,42 @@ module.exports = {
 
     // @todo image delete_sign / checkmark should be editable via option
     // @todo options enable live validation
-    if (!(typeof this.state.value === 'undefined' || this.state.value === '') && this.state.validationErrorMessage !== null && this.props.image !== null && this.props.type !== 'OptionWidget' && this.props.validationImage === true && toValidate === true) {
-      return (
-        <Image
-          style={this.getStyle('rowImage')}
-          resizeMode={Image.resizeMode.contain}
-          source={require('../icons/delete_sign.png')}
-        />
-      );
-    } else if (!(typeof this.state.value === 'undefined' || this.state.value === '') && this.state.validationErrorMessage === null && this.props.image !== null && this.props.type !== 'OptionWidget' && this.props.validationImage === true && toValidate === true) {
-      return (
-        <Image
-          style={this.getStyle('rowImage')}
-          resizeMode={Image.resizeMode.contain}
-          source={require('../icons/checkmark.png')}
-        />
-      );
-    } else if (this.props.image !== null) {
-      if (typeof this.props.image == 'object') {
-        return(this.props.image);
-      } else {
-        return (
-          <Image
-            style={this.getStyle('rowImage')}
-            resizeMode={Image.resizeMode.contain}
-            source={this.props.image}
-          />
-        );
-      }
+
+    let hasValue = typeof this.state.value !== 'undefined' && this.state.value !== '';
+
+    if (this.props.validateOnEmpty) {
+      hasValue = true;
     }
+
+    const hasValidationErrors = this.state.validationErrorMessage !== null;
+    const hasImageProp = this.props.image !== null;
+    const isOptionWidget = this.props.type === 'OptionWidget'
+    const shouldShowValidationImage = this.props.validationImage === true;
+
+    if (hasValue && hasImageProp && !isOptionWidget && shouldShowValidationImage && toValidate) {
+      const imageSrc = hasValidationErrors ? 'delete_sign.png' : 'checkmark.png';
+
+      return (
+        <Image
+          style={this.getStyle('rowImage')}
+          resizeMode={Image.resizeMode.contain}
+          source={require(`../icons/${imageSrc}`)}
+        />
+      );
+    } else if (hasImageProp) {
+      if (typeof this.props.image === 'object') {
+        return(this.props.image);
+      }
+
+      return (
+        <Image
+          style={this.getStyle('rowImage')}
+          resizeMode={Image.resizeMode.contain}
+          source={this.props.image}
+        />
+      );
+    }
+
     return null;
   },
 };
