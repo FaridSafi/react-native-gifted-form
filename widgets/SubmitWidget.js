@@ -19,7 +19,6 @@ module.exports = React.createClass({
       type: 'SubmitWidget',
       onSubmit: () => {},
       preSubmit: () => {},
-      onValidationError: () => {},
       isDisabled: false,
       activityIndicatorColor: 'black',
       requiredMessage: '{TITLE} is required',
@@ -30,7 +29,6 @@ module.exports = React.createClass({
   propTypes: {
     onSubmit: React.PropTypes.func,
     preSubmit: React.PropTypes.func,
-    onValidationError: React.PropTypes.func,
     isDisabled: React.PropTypes.bool,
     activityIndicatorColor: React.PropTypes.string,
     requiredMessage: React.PropTypes.string,
@@ -62,11 +60,11 @@ module.exports = React.createClass({
       }
     }
 
-    this.props.onValidationError(errors);
+    this.props.form.setState({errors});
   },
 
   clearValidationErrors() {
-    this.props.onValidationError([]);
+    this.props.form.setState({errors: []});
   },
 
   _postSubmit(errors = []) {
@@ -75,7 +73,7 @@ module.exports = React.createClass({
     this.setState({
       isLoading: false,
     });
-    this.props.onValidationError(errors);
+    this.props.form.setState({errors});
   },
 
   _doSubmit() {
