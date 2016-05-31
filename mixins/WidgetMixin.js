@@ -218,7 +218,7 @@ module.exports = {
         <Image
           style={this.getStyle('rowImage')}
           resizeMode={Image.resizeMode.contain}
-          source={require(`../icons/${imageSrc}`)}
+          source={{ uri: `../icons/${imageSrc}` }}
         />
       );
     } else if (hasImageProp) {
