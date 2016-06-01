@@ -212,7 +212,7 @@ module.exports = {
     const shouldShowValidationImage = this.props.validationImage === true;
 
     if (hasValue && hasImageProp && !isOptionWidget && shouldShowValidationImage && toValidate) {
-      const imageSrc = hasValidationErrors ? require('../icons/delete_sign.png'):require('../icons/checkmark.png');;
+      const imageSrc = hasValidationErrors ? require('../icons/delete_sign.png'):require('../icons/checkmark.png');
 
       return (
         <Image
