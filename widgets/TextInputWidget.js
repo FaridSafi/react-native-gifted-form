@@ -19,6 +19,7 @@ module.exports = React.createClass({
       type: 'TextInputWidget',
       underlined: false,
       onTextInputFocus: (value) => value,
+      onTextInputBlur: (value) => value
     }
   },
   
@@ -115,6 +116,7 @@ module.exports = React.createClass({
       focused: false,
     });    
     this.props.onBlur();
+    this.props.onTextInputBlur(this.state.value);
   },
   
   
