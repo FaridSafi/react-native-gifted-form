@@ -212,13 +212,13 @@ module.exports = {
     const shouldShowValidationImage = this.props.validationImage === true;
 
     if (hasValue && hasImageProp && !isOptionWidget && shouldShowValidationImage && toValidate) {
-      const imageSrc = hasValidationErrors ? 'delete_sign.png' : 'checkmark.png';
+      const imageSrc = hasValidationErrors ? require('../icons/delete_sign.png'):require('../icons/checkmark.png');
 
       return (
         <Image
           style={this.getStyle('rowImage')}
           resizeMode={Image.resizeMode.contain}
-          source={require(`../icons/${imageSrc}`)}
+          source={imageSrc}
         />
       );
     } else if (hasImageProp) {
