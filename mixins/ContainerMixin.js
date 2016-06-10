@@ -28,6 +28,12 @@ module.exports = {
     }
   },
 
+  getInitialState() {
+    return {
+      errors: [],
+    };
+  },
+
   _onTouchStart(e) {
     this._pageY = e.nativeEvent.pageY;
     this._locationY = e.nativeEvent.locationY;
