@@ -144,8 +144,11 @@ module.exports = {
     GiftedFormManager.updateValue(this.props.formName, this.props.name, value);
   },
 
-  _onChange(value) {
-    this.props.onChangeText && this.props.onChangeText(value); //should maintain similar API to core TextInput component
+  _onChange(value, onChangeText = true) {
+    if (onChangeText === true) {
+      //should maintain similar API to core TextInput component
+      this.props.onChangeText && this.props.onChangeText(value);
+    }
 
     this._setValue(value);
     this._validate(value);
