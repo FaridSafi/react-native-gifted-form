@@ -38,7 +38,6 @@ module.exports = React.createClass({
   getInitialState() {
     return {
       isLoading: false,
-      errors: '',
     };
   },
 
@@ -61,9 +60,11 @@ module.exports = React.createClass({
       }
     }
 
-    this.setState({
-      errors: errors.join('\n'),
-    });
+    this.props.form.setState({errors});
+  },
+
+  clearValidationErrors() {
+    this.props.form.setState({errors: []});
   },
 
   _postSubmit(errors = []) {
@@ -71,17 +72,14 @@ module.exports = React.createClass({
 
     this.setState({
       isLoading: false,
-      errors: errors.join('\n'),
     });
+    this.props.form.setState({errors});
   },
 
   _doSubmit() {
     this.props.preSubmit();
 
-    this.setState({
-      errors: '',
-    });
-
+    this.clearValidationErrors()
     var validationResults = GiftedFormManager.validate(this.props.formName);
     var values = GiftedFormManager.getValues(this.props.formName);
 
@@ -96,27 +94,9 @@ module.exports = React.createClass({
     }
   },
 
-  renderErrors() {
-    if (this.state.errors.length > 0) {
-      return (
-        <View
-          style={this.getStyle('errorContainer')}
-        >
-          <Text
-            style={this.getStyle('errorText')}
-          >
-            {this.state.errors}
-          </Text>
-        </View>
-      );
-    }
-    return null;
-  },
-
   render() {
     return (
       <View>
-        {this.renderErrors()}
         <Button
           ref='submitButton'
           style={this.getStyle('submitButton')}
@@ -151,12 +131,6 @@ module.exports = React.createClass({
     textSubmitButton: {
       color: 'white',
       fontSize: 15,
-    },
-    errorContainer: {
-      padding: 10,
-    },
-    errorText: {
-      color: '#ff0000',
     },
   },
 

@@ -22,6 +22,7 @@ const GooglePlacesWidget = require('./widgets/GooglePlacesWidget');
 const RowWidget = require('./widgets/RowWidget');
 const LoadingWidget = require('./widgets/LoadingWidget');
 const HiddenWidget = require('./widgets/HiddenWidget');
+const ErrorsWidget = require('./widgets/ErrorsWidget');
 
 const GiftedForm = React.createClass({
   mixins: [ ContainerMixin ],
@@ -44,6 +45,7 @@ const GiftedForm = React.createClass({
     LoadingWidget,
     HiddenWidget,
     ValidationErrorWidget,
+    ErrorsWidget,
   },
 
   getDefaultProps() {
