@@ -70,6 +70,7 @@ module.exports = React.createClass({
 
 
     var route = {
+      onClose: _self.onClose,
       renderScene(navigator) {
         // not passing onFocus/onBlur of the current scene to the new scene
         var {onFocus, onBlur, ...others} = _self.props;
@@ -170,7 +171,6 @@ module.exports = React.createClass({
   },
 
   componentDidMount() {
-    // @todo test if its working
     this.setState({
       value: this._getDisplayableValue(),
     });
