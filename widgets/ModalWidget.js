@@ -26,6 +26,7 @@ module.exports = React.createClass({
       disclosure: true,
       cancelable: false,
       displayValue: '',
+      onClose: () => {}
     };
   },
 
@@ -35,6 +36,7 @@ module.exports = React.createClass({
     disclosure: React.PropTypes.bool,
     cancelable: React.PropTypes.bool,
     displayValue: React.PropTypes.string,
+    onClose: React.PropTypes.func
   },
 
   getInitialState() {
@@ -190,6 +192,8 @@ module.exports = React.createClass({
     if (navigator !== null) {
       navigator.pop();
     }
+
+    this.props.onClose && this.props.onClose();
   },
 
   refreshDisplayableValue() {

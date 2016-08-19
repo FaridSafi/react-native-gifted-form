@@ -1935,9 +1935,10 @@ module.exports = React.createClass({
     );
   },
 
-  renderSeparator() {
+  renderSeparator(sectionId, rowId) {
     return (
       <View
+        key={`sep:${sectionId}:${rowId}`}
         style={this.getStyle(['separator'])}
       />
     );
@@ -1964,6 +1965,8 @@ module.exports = React.createClass({
           keyboardDismissMode="on-drag"
 
           renderSeparator={this.renderSeparator}
+
+          enableEmptySections={true}
 
         />
       </View>
