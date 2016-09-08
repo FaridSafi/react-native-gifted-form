@@ -219,7 +219,7 @@ class Manager {
     return {isValid: true, results};
   }
 
-  getValidationErrors(validated, notValidMessage = 'Invalid', requiredMessage = 'Required') {
+  getValidationErrors(validated, notValidMessage = '{TITLE} Invalid', requiredMessage = '{TITLE} Required') {
     var errors = [];
     if (validated.isValid === false) {
       for (var k in validated.results) {
