@@ -240,7 +240,8 @@ var Component = React.createClass({
         </GiftedForm.ModalWidget>
 
 
-
+        <GiftedForm.ErrorsWidget/>
+        
         <GiftedForm.SubmitWidget
           title='Sign up'
           widgetStyles={{

@@ -245,7 +245,7 @@ class Example extends React.Component {
               />
             </GiftedForm.ModalWidget>
 
-
+            <GiftedForm.ErrorsWidget/>
 
             <GiftedForm.SubmitWidget
               title='Sign up'
