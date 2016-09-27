@@ -10,6 +10,9 @@ const MyTypeaheadComponent = React.createClass({
       <GiftedForm.SelectTypeaheadWidget
         title='Search'
         name='search'
+        placeholder='Type to search...'
+        noResultsText='Sorry, we couldnt find any results...'
+        fetchOnMount={false}
         onSearch={this.handleSearch.bind(this)}
         onSearchError={error => { console.log(error); }}
       />
