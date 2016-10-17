@@ -21,7 +21,11 @@ module.exports = React.createClass({
       disclosure: true,
     };
   },
-  
+  getInitialState() {
+    return {
+      value:this.props.placeholder || ''
+    };
+  },
   _renderDisclosure() {
     if (this.props.disclosure === true) {
       return (
@@ -50,6 +54,9 @@ module.exports = React.createClass({
           <View style={this.getStyle('row')}>
             {this._renderImage()}
             <Text numberOfLines={1} style={this.getStyle('title')}>{this.props.title}</Text>
+            <View style={this.getStyle('alignRight')}>
+              <Text numberOfLines={1} style={this.getStyle('value')}>{this.state.value}</Text>
+            </View>
             {this._renderDisclosure()}
           </View>
         </TouchableHighlight>
@@ -86,5 +93,12 @@ module.exports = React.createClass({
       color: '#000',
       paddingLeft: 10,
     },
+    alignRight: {
+      alignItems: 'flex-end',
+    },
+    value: {
+      fontSize: 15,
+      color: '#c7c7cc',
+    }
   },
 });
