@@ -23,7 +23,7 @@ module.exports = React.createClass({
   },
   getInitialState() {
     return {
-      value:this.props.placeholder || ''
+      value:this.props.value || this.props.placeholder || ''
     };
   },
   _renderDisclosure() {
