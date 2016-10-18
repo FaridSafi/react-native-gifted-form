@@ -1,9 +1,6 @@
 'use strict';
 
-import React, {
-  AppRegistry,
-} from 'react-native';
-
+import React from 'react';
 import ExNavigator from '@exponent/react-native-navigator';
 var { GiftedForm, GiftedFormManager } = require('react-native-gifted-form');
 
