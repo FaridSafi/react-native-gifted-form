@@ -183,8 +183,9 @@ class Example extends React.Component {
               <GiftedForm.SeparatorWidget />
 
               <GiftedForm.SelectWidget name='gender' title='Gender' multiple={false}>
-                <GiftedForm.OptionWidget image={require('./icons/color/female.png')} title='Female' value='F'/>
-                <GiftedForm.OptionWidget image={require('./icons/color/male.png')} title='Male' value='M'/>
+                <GiftedForm.OptionWidget image={require('./icons/color/female.png')} title='Woman' value='W'/>
+                <GiftedForm.OptionWidget image={require('./icons/color/male.png')} title='Man' value='M'/>
+                <GiftedForm.OptionWidget image={require('./icons/color/other.png')} title='Other' value='O'/>
               </GiftedForm.SelectWidget>
             </GiftedForm.ModalWidget>
 
