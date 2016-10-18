@@ -1,8 +1,9 @@
 'use strict';
 
+import moment from 'moment';
 import React from 'react';
 import ExNavigator from '@exponent/react-native-navigator';
-var { GiftedForm, GiftedFormManager } = require('react-native-gifted-form');
+import { GiftedForm, GiftedFormManager } from 'react-native-gifted-form';
 
 class Example extends React.Component {
   render() {
@@ -242,7 +243,7 @@ class Example extends React.Component {
               title='Sign up'
               widgetStyles={{
                 submitButton: {
-                  backgroundColor: themes.mainColor,
+                  backgroundColor: '#2185D0',
                 }
               }}
               onSubmit={(isValid, values, validationResults, postSubmit = null, modalNavigator = null) => {
@@ -276,4 +277,4 @@ class Example extends React.Component {
   }
 }
 
-module.exports = Example;
+export default Example;

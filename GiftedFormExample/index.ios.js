@@ -7,6 +7,6 @@
 import React from 'react';
 import { AppRegistry } from 'react-native';
 
-var app = require('./app');
+import app from './app';
 
 AppRegistry.registerComponent('GiftedFormExample', () => app);
