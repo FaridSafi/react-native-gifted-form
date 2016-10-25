@@ -225,7 +225,7 @@ module.exports = {
         />
       );
     } else if (hasImageProp) {
-      if (typeof this.props.image === 'object') {
+      if (typeof this.props.image === 'object' && this.props.image.isReactComponent) {
         return(this.props.image);
       }
 
