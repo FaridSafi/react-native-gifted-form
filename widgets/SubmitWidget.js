@@ -67,7 +67,7 @@ module.exports = React.createClass({
       });
       this.props.onSubmit(true, values, validationResults, this._postSubmit, this.props.navigator);
     } else {
-      var errors = this.getValidationErrors(
+      var errors = GiftedFormManager.getValidationErrors(
         validationResults,
         this.props.notValidMessage,
         this.props.requiredMesage
