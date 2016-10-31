@@ -16,7 +16,10 @@ module.exports = {
 
   propTypes: {
     name: React.PropTypes.string,
-    title: React.PropTypes.string,
+    title: React.PropTypes.oneOf([
+        React.PropTypes.string,
+        React.PropTypes.element,
+    ]),
     formName: React.PropTypes.string,
     // image: ,
     widgetStyles: React.PropTypes.object,
