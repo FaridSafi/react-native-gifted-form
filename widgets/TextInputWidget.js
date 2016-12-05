@@ -203,7 +203,8 @@ module.exports = React.createClass({
       fontSize: 15,
       flex: 1,
       height: 40,
-      marginLeft: 40,
+      marginLeft: 7,
+      marginRight: 7,
     },
   },
 });
