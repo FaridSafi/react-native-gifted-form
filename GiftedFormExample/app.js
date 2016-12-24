@@ -1,9 +1,11 @@
 'use strict';
 
-import React, {
+import React from 'react';
+import {
   AppRegistry,
 } from 'react-native';
 
+import moment from 'moment';
 
 import ExNavigator from '@exponent/react-native-navigator';
 var {GiftedForm, GiftedFormManager} = require('react-native-gifted-form');
@@ -251,7 +253,7 @@ class Example extends React.Component {
               title='Sign up'
               widgetStyles={{
                 submitButton: {
-                  backgroundColor: themes.mainColor,
+                  backgroundColor: "blue",
                 }
               }}
               onSubmit={(isValid, values, validationResults, postSubmit = null, modalNavigator = null) => {
