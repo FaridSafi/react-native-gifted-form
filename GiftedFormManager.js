@@ -5,6 +5,12 @@ function doValidateOne(k = '', value = undefined, validators = {}) {
   var validate = validators.validate || [];
   var result = [];
 
+  if (value === undefined) {
+        value = ""
+  }
+
+  value = value + ""
+
   for (var i = 0; i < validate.length; i++) {
     if (validate[i].validator === 'undefined') { continue; }
 
