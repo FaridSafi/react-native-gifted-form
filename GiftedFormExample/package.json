@@ -1,13 +1,23 @@
 {
-  "name": "GiftedFormExample",
-  "version": "0.0.1",
-  "private": true,
-  "scripts": {
-    "start": "node_modules/react-native/packager/packager.sh"
-  },
-  "dependencies": {
-    "@exponent/react-native-navigator": "^0.4.1",
-    "react-native": "^0.18.1",
-    "react-native-gifted-form": "0.0.1"
-  }
+	"name": "GiftedFormExample",
+	"version": "0.0.1",
+	"private": true,
+	"scripts": {
+		"start": "node node_modules/react-native/local-cli/cli.js start",
+		"test": "jest"
+	},
+	"dependencies": {
+		"react": "15.4.1",
+	        "react-native": "0.39.2",
+                "@exponent/react-native-navigator": "^0.4.1"
+	},
+	"devDependencies": {
+		"babel-jest": "18.0.0",
+		"babel-preset-react-native": "1.9.1",
+		"jest": "18.0.0",
+		"react-test-renderer": "15.4.1"
+	},
+	"jest": {
+		"preset": "react-native"
+	}
 }
