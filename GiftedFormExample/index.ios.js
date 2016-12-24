@@ -3,8 +3,10 @@
  * https://github.com/facebook/react-native
  */
 'use strict';
-import React, {
-  AppRegistry,
+
+import React, {Component} from 'react'
+import {
+    AppRegistry,
 } from 'react-native';
 
 var app = require('./app');
