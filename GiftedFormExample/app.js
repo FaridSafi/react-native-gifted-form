@@ -1,13 +1,9 @@
 'use strict';
 
-import React, {
-  AppRegistry,
-} from 'react-native';
-
-
+import moment from 'moment';
+import React from 'react';
 import ExNavigator from '@exponent/react-native-navigator';
-var {GiftedForm, GiftedFormManager} = require('react-native-gifted-form');
-
+import { GiftedForm, GiftedFormManager } from 'react-native-gifted-form';
 
 class Example extends React.Component {
   render() {
@@ -19,7 +15,7 @@ class Example extends React.Component {
       />
     );
   }
-  
+
   getRoute() {
     return {
       renderScene(navigator) {
@@ -34,13 +30,11 @@ class Example extends React.Component {
             clearOnClose={false} // delete the values of the form when unmounted
 
             defaults={{
-              /*
               username: 'Farid',
               'gender{M}': true,
               password: 'abcdefg',
               country: 'FR',
-              birthday: new Date(((new Date()).getFullYear() - 18)+''),
-              */
+              birthday: new Date(((new Date()).getFullYear() - 18) + ''),
             }}
 
             validators={{
@@ -58,7 +52,7 @@ class Example extends React.Component {
                   validator: 'isLength',
                   arguments: [3, 16],
                   message: '{TITLE} must be between {ARGS[0]} and {ARGS[1]} characters'
-                },{
+                }, {
                   validator: 'matches',
                   arguments: /^[a-zA-Z0-9]*$/,
                   message: '{TITLE} can contains only alphanumeric characters'
@@ -77,7 +71,7 @@ class Example extends React.Component {
                 validate: [{
                   validator: 'isLength',
                   arguments: [6, 255],
-                },{
+                }, {
                   validator: 'isEmail',
                 }]
               },
@@ -125,6 +119,7 @@ class Example extends React.Component {
           >
 
             <GiftedForm.SeparatorWidget />
+
             <GiftedForm.TextInputWidget
               name='fullName' // mandatory
               title='Full name'
@@ -134,7 +129,6 @@ class Example extends React.Component {
               placeholder='Marco Polo'
               clearButtonMode='while-editing'
             />
-
 
             <GiftedForm.TextInputWidget
               name='username'
@@ -189,8 +183,9 @@ class Example extends React.Component {
               <GiftedForm.SeparatorWidget />
 
               <GiftedForm.SelectWidget name='gender' title='Gender' multiple={false}>
-                <GiftedForm.OptionWidget image={require('./icons/color/female.png')} title='Female' value='F'/>
-                <GiftedForm.OptionWidget image={require('./icons/color/male.png')} title='Male' value='M'/>
+                <GiftedForm.OptionWidget image={require('./icons/color/female.png')} title='Woman' value='W'/>
+                <GiftedForm.OptionWidget image={require('./icons/color/male.png')} title='Man' value='M'/>
+                <GiftedForm.OptionWidget image={require('./icons/color/other.png')} title='Other' value='O'/>
               </GiftedForm.SelectWidget>
             </GiftedForm.ModalWidget>
 
@@ -207,10 +202,11 @@ class Example extends React.Component {
                 mode='date'
 
                 getDefaultDate={() => {
-                  return new Date(((new Date()).getFullYear() - 18)+'');
+                  return new Date(((new Date()).getFullYear() - 18) + '');
                 }}
               />
             </GiftedForm.ModalWidget>
+
             <GiftedForm.ModalWidget
               title='Country'
               displayValue='country'
@@ -218,14 +214,13 @@ class Example extends React.Component {
               scrollEnabled={false}
 
             >
-              <GiftedForm.SelectCountryWidget 
-                code='alpha2' 
-                name='country' 
-                title='Country' 
+              <GiftedForm.SelectCountryWidget
+                code='alpha2'
+                name='country'
+                title='Country'
                 autoFocus={true}
               />
             </GiftedForm.ModalWidget>
-
 
             <GiftedForm.ModalWidget
               title='Biography'
@@ -245,13 +240,11 @@ class Example extends React.Component {
               />
             </GiftedForm.ModalWidget>
 
-
-
             <GiftedForm.SubmitWidget
               title='Sign up'
               widgetStyles={{
                 submitButton: {
-                  backgroundColor: themes.mainColor,
+                  backgroundColor: '#2185D0',
                 }
               }}
               onSubmit={(isValid, values, validationResults, postSubmit = null, modalNavigator = null) => {
@@ -261,23 +254,22 @@ class Example extends React.Component {
                   values.birthday = moment(values.birthday).format('YYYY-MM-DD');
 
                   /* Implement the request to your server using values variable
-                  ** then you can do:
-                  ** postSubmit(['An error occurred, please try again']); // disable the loader and display an error message
-                  ** postSubmit(['Username already taken', 'Email already taken']); // disable the loader and display an error message
-                  ** GiftedFormManager.reset('signupForm'); // clear the states of the form manually. 'signupForm' is the formName used
-                  */
-                  
+                   ** then you can do:
+                   ** postSubmit(['An error occurred, please try again']); // disable the loader and display an error message
+                   ** postSubmit(['Username already taken', 'Email already taken']); // disable the loader and display an error message
+                   ** GiftedFormManager.reset('signupForm'); // clear the states of the form manually. 'signupForm' is the formName used
+                   */
+
                   postSubmit();
                 }
               }}
-
             />
 
-            <GiftedForm.NoticeWidget 
+            <GiftedForm.NoticeWidget
               title='By signing up, you agree to the Terms of Service and Privacy Policity.'
             />
 
-            <GiftedForm.HiddenWidget name='tos' value={true} />
+            <GiftedForm.HiddenWidget name='tos' value={true}/>
 
           </GiftedForm>
         );
@@ -286,5 +278,4 @@ class Example extends React.Component {
   }
 }
 
-
-module.exports = Example;
+export default Example;
