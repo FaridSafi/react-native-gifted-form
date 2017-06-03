@@ -2,7 +2,7 @@
 
 import moment from 'moment';
 import React from 'react';
-import ExNavigator from '@exponent/react-native-navigator';
+import ExNavigator from '@expo/react-native-navigator';
 import { GiftedForm, GiftedFormManager } from 'react-native-gifted-form';
 
 class Example extends React.Component {

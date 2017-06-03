@@ -7,20 +7,20 @@
     "test": "jest"
   },
   "dependencies": {
-    "@exponent/react-native-navigator": "0.4.9",
-    "moment": "2.15.1",
-    "react": "15.3.2",
-    "react-native": "0.35.0",
-    "react-native-gifted-form": "0.0.13"
+    "@expo/react-native-navigator": "0.5.1",
+    "moment": "2.18.1",
+    "react": "16.0.0-alpha.6",
+    "react-native": "0.43.4",
+    "react-native-gifted-form": "file:.."
   },
   "jest": {
     "preset": "jest-react-native"
   },
   "devDependencies": {
-    "babel-jest": "16.0.0",
-    "babel-preset-react-native": "1.9.0",
-    "jest": "16.0.1",
-    "jest-react-native": "16.0.0",
-    "react-test-renderer": "15.3.2"
+    "babel-jest": "20.0.3",
+    "babel-preset-react-native": "1.9.2",
+    "jest": "20.0.4",
+    "jest-react-native": "18.0.0",
+    "react-test-renderer": "15.5.4"
   }
 }
