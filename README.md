@@ -343,6 +343,7 @@ AppRegistry.registerComponent('Form', () => Form)
 - HiddenWidget - A non-displayed widget. The value will be passed to SubmitWidget
 - LoadingWidget - A loader
 - RowWidget - A touchable row with title/image
+- RowValueWidget - A touchable row with title/image and a value
 - SelectCountryWidget - A country picker. Flags made by www.IconDrawer.com
 - SelectWidget - A select menu
 - SeparatorWidget - A 10px widgets separator
