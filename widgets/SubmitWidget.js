@@ -41,28 +41,6 @@ module.exports = React.createClass({
     };
   },
 
-  onValidationError(validated) {
-    var errors = [];
-    if (validated.isValid === false) {
-      for (var k in validated.results) {
-        if (validated.results.hasOwnProperty(k)) {
-          for (var j in validated.results[k]) {
-            if (validated.results[k].hasOwnProperty(j)) {
-              if (validated.results[k][j].isValid === false) {
-                let defaultMessage = !!validated.results[k][j].value ? this.props.notValidMessage : this.props.requiredMessage;
-                errors.push(validated.results[k][j].message || defaultMessage.replace('{TITLE}', validated.results[k][j].title));
-                // displaying only 1 error per widget
-                break;
-              }
-            }
-          }
-        }
-      }
-    }
-
-    this.props.form.setState({errors});
-  },
-
   clearValidationErrors() {
     this.props.form.setState({errors: []});
   },
@@ -89,7 +67,12 @@ module.exports = React.createClass({
       });
       this.props.onSubmit(true, values, validationResults, this._postSubmit, this.props.navigator);
     } else {
-      this.onValidationError(validationResults);
+      var errors = GiftedFormManager.getValidationErrors(
+        validationResults,
+        this.props.notValidMessage,
+        this.props.requiredMesage
+      );
+      this.props.form.setState({errors: errors});
       this.props.onSubmit(false, values, validationResults, this._postSubmit, this.props.navigator);
     }
   },
