@@ -51,6 +51,13 @@ function doValidateOne(k = '', value = undefined, validators = {}) {
         }
       }
 
+      // Validator ONLY accepts string arguments.
+      if (clonedArgs[0] === null || clonedArgs[0] === undefined) {
+        clonedArgs[0] = '';
+      } else {
+        clonedArgs[0] = String(clonedArgs[0]);
+      }
+
       isValid = validatorjs[validate[i].validator].apply(null, clonedArgs);
 
       result.push({
