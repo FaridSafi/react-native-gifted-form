@@ -104,7 +104,7 @@ append-transform@^0.4.0:
   dependencies:
     default-require-extensions "^1.0.0"
 
-apsl-react-native-button@^3.0.0:
+apsl-react-native-button@~3.0.0:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/apsl-react-native-button/-/apsl-react-native-button-3.0.2.tgz#705d5658b59b615cf0c3d62f0c40b80d1d2c9f81"
   dependencies:
@@ -2583,7 +2583,7 @@ mkdirp@^0.5.1:
   dependencies:
     minimist "0.0.8"
 
-moment@2.18.1, moment@2.x.x, moment@^2.14.1:
+moment@2.18.1, moment@2.x.x, moment@~2.18.1:
   version "2.18.1"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.18.1.tgz#c36193dd3ce1c2eed2adb7c802dbbc77a81b1c0f"
 
@@ -2974,7 +2974,7 @@ react-devtools-core@^2.0.8:
     shell-quote "^1.6.1"
     ws "^2.0.3"
 
-react-native-button@^1.6.0:
+react-native-button@~1.8.2:
   version "1.8.2"
   resolved "https://registry.yarnpkg.com/react-native-button/-/react-native-button-1.8.2.tgz#49e5cadd22ee443adea52a85539d288aa2117ade"
 
@@ -2990,19 +2990,19 @@ react-native-deprecated-custom-components@^0.1.0:
 "react-native-gifted-form@file:..":
   version "0.0.14"
   dependencies:
-    apsl-react-native-button "^3.0.0"
-    moment "^2.14.1"
-    react-native-button "^1.6.0"
-    react-native-gifted-spinner "^0.0.5"
-    react-native-google-places-autocomplete "^1.2.0"
-    react-timer-mixin "^0.13.3"
-    validator "^5.4.0"
+    apsl-react-native-button "~3.0.0"
+    moment "~2.18.1"
+    react-native-button "~1.8.2"
+    react-native-gifted-spinner "~0.1.0"
+    react-native-google-places-autocomplete "~1.2.0"
+    react-timer-mixin "~0.13.3"
+    validator "~7.1.0"
 
-react-native-gifted-spinner@^0.0.5:
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/react-native-gifted-spinner/-/react-native-gifted-spinner-0.0.5.tgz#0da20cf371f90a5ac32eefca51b5a156d2b4f8bd"
+react-native-gifted-spinner@~0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/react-native-gifted-spinner/-/react-native-gifted-spinner-0.1.0.tgz#2c76094fa0469c59e96dead270cd5bca5a55962a"
 
-react-native-google-places-autocomplete@^1.2.0:
+react-native-google-places-autocomplete@~1.2.0:
   version "1.2.12"
   resolved "https://registry.yarnpkg.com/react-native-google-places-autocomplete/-/react-native-google-places-autocomplete-1.2.12.tgz#714c731be35bfca190239d98cbc7e0d518b38d98"
   dependencies:
@@ -3108,7 +3108,7 @@ react-test-renderer@15.5.4:
     fbjs "^0.8.9"
     object-assign "^4.1.0"
 
-react-timer-mixin@^0.13.2, react-timer-mixin@^0.13.3:
+react-timer-mixin@^0.13.2, react-timer-mixin@~0.13.3:
   version "0.13.3"
   resolved "https://registry.yarnpkg.com/react-timer-mixin/-/react-timer-mixin-0.13.3.tgz#0da8b9f807ec07dc3e854d082c737c65605b3d22"
 
@@ -3769,9 +3769,9 @@ validate-npm-package-license@^3.0.1:
     spdx-correct "~1.0.0"
     spdx-expression-parse "~1.0.0"
 
-validator@^5.4.0:
-  version "5.7.0"
-  resolved "https://registry.yarnpkg.com/validator/-/validator-5.7.0.tgz#7a87a58146b695ac486071141c0c49d67da05e5c"
+validator@~7.1.0:
+  version "7.1.0"
+  resolved "https://registry.yarnpkg.com/validator/-/validator-7.1.0.tgz#331695afc7e6d72f980bddd68aa296d6b3d6c8b6"
 
 vary@~1.0.1:
   version "1.0.1"
