@@ -297,6 +297,27 @@ class Manager {
       this.stores[obj.formName].values[obj.name] = obj.value;
     }
   }
+
+  getValidationErrors(validated, notValidMessage = '{TITLE} Invalid', requiredMessage = '{TITLE} Required') {
+    var errors = [];
+    if (validated.isValid === false) {
+      for (var k in validated.results) {
+        if (validated.results.hasOwnProperty(k)) {
+          for (var j in validated.results[k]) {
+            if (validated.results[k].hasOwnProperty(j)) {
+              if (validated.results[k][j].isValid === false) {
+                let defaultMessage = !!validated.results[k][j].value ? notValidMessage : requiredMessage;
+                errors.push(validated.results[k][j].message || defaultMessage.replace('{TITLE}', validated.results[k][j].title));
+                // displaying only 1 error per widget
+                break;
+              }
+            }
+          }
+        }
+      }
+    }
+    return errors;
+  }
 }
 
 module.exports = new Manager();

@@ -130,7 +130,7 @@ module.exports = {
           style={viewStyle}
           automaticallyAdjustContentInsets={false}
           keyboardDismissMode='on-drag'
-          keyboardShouldPersistTaps={true}
+          keyboardShouldPersistTaps="always"
 
           onTouchStart={this.props.scrollOnTap === true ? this._onTouchStart : null}
           onScroll={this.props.scrollOnTap === true ? this._onScroll : null}
