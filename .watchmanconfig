@@ -1,0 +1,7 @@
+{
+  "ignore_dirs": [
+    "example",
+    ".git",
+    "node_modules"
+  ]
+}
