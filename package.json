@@ -1,7 +1,7 @@
 {
   "name": "react-native-gifted-form",
   "version": "0.0.15",
-  "description": "Form component for react-native",
+  "description": "Form component for React Native",
   "main": "GiftedForm.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -12,8 +12,9 @@
   },
   "keywords": [
     "form",
-    "react-component",
     "react-native",
+    "react",
+    "react-component",
     "ios",
     "android"
   ],
