@@ -6,7 +6,7 @@ function doValidateOne(k = '', value = undefined, validators = {}) {
   var result = [];
 
   for (var i = 0; i < validate.length; i++) {
-    if (validate[i].validator === 'undefined') { continue; }
+    if (!validate[i].validator || validate[i].validator === 'undefined') { continue; }
 
     var args = validate[i].arguments;
     args = !Array.isArray(args) ? [ args ] : args;
