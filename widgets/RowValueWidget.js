@@ -13,15 +13,16 @@ var TimerMixin = require('react-timer-mixin');
 
 module.exports = React.createClass({
   mixins: [TimerMixin, WidgetMixin],
-  
+
   getDefaultProps() {
     return {
       type: 'RowValueWidget',
       onPress: () => {},
       disclosure: true,
+      allowTextFontScaling: true,
     };
   },
-  
+
   render() {
     return (
       <View style={this.getStyle('rowContainer')}>
@@ -36,16 +37,24 @@ module.exports = React.createClass({
         >
           <View style={this.getStyle('row')}>
             {this._renderImage()}
-            <Text numberOfLines={1} style={this.getStyle('title')}>{this.props.title}</Text>
+            <Text
+              numberOfLines={1}
+              allowFontScaling={this.props.allowTextFontScaling}
+              style={this.getStyle('title')}
+            >{this.props.title}</Text>
             <View style={this.getStyle('alignRight')}>
-              <Text numberOfLines={1} style={this.getStyle('value')}>{this.state.value}</Text>
+              <Text
+                numberOfLines={1}
+                allowFontScaling={this.props.allowTextFontScaling}
+                style={this.getStyle('value')}
+              >{this.state.value}</Text>
             </View>
           </View>
         </TouchableHighlight>
       </View>
     );
   },
-  
+
   defaultStyles: {
     rowImage: {
       height: 20,
