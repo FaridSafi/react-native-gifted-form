@@ -10,6 +10,12 @@ const WidgetMixin = require('../mixins/WidgetMixin.js');
 module.exports = React.createClass({
   mixins: [WidgetMixin],
 
+  getDefaultProps() {
+    return {
+      allowTextFontScaling: true,
+    };
+  },
+
   render() {
     var errors = this.props.form.state.errors;
     if (errors.length > 0) {
@@ -18,6 +24,7 @@ module.exports = React.createClass({
           style={this.getStyle('errorContainer')}
         >
           <Text
+            allowFontScaling={this.props.allowTextFontScaling}
             style={this.getStyle('errorText')}
           >
             {errors.join('\n')}
