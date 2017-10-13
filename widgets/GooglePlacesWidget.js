@@ -1,11 +1,12 @@
-var React = require('react');
+import React from 'react';
+import createReactClass from 'create-react-class';
 
 var WidgetMixin = require('../mixins/WidgetMixin.js');
 
 var {GooglePlacesAutocomplete} = require('react-native-google-places-autocomplete');
 
 
-module.exports = React.createClass({
+module.exports = createReactClass({
   mixins: [WidgetMixin],
 
   getDefaultProps() {

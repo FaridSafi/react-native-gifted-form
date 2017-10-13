@@ -1,4 +1,6 @@
 import React from 'react';
+import createReactClass from 'create-react-class';
+import PropTypes from 'prop-types';
 import {
   View,
   Text,
@@ -16,7 +18,7 @@ var TimerMixin = require('react-timer-mixin');
 
 var moment = require('moment');
 
-module.exports = React.createClass({
+module.exports = createReactClass({
   mixins: [TimerMixin, WidgetMixin],
 
   getDefaultProps() {
@@ -31,12 +33,12 @@ module.exports = React.createClass({
   },
 
   propTypes: {
-    type: React.PropTypes.string,
-    scrollEnabled: React.PropTypes.bool,
-    disclosure: React.PropTypes.bool,
-    cancelable: React.PropTypes.bool,
-    displayValue: React.PropTypes.string,
-    onClose: React.PropTypes.func
+    type: PropTypes.string,
+    scrollEnabled: PropTypes.bool,
+    disclosure: PropTypes.bool,
+    cancelable: PropTypes.bool,
+    displayValue: PropTypes.string,
+    onClose: PropTypes.func
   },
 
   getInitialState() {

@@ -1,15 +1,16 @@
-var React = require('react');
-var {
+import React from 'react';
+import createReactClass from 'create-react-class';
+import {
   View,
   Text,
   TextInput,
   PixelRatio
-} = require('react-native')
+} from 'react-native';
 
 var WidgetMixin = require('../mixins/WidgetMixin.js');
 
 
-module.exports = React.createClass({
+module.exports = createReactClass({
   mixins: [WidgetMixin],
 
   getDefaultProps() {

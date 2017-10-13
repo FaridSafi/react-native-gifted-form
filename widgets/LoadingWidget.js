@@ -1,16 +1,17 @@
-var React = require('react');
-var {
+import React from 'react';
+import createReactClass from 'create-react-class';
+import {
   View,
   Text,
   TouchableHighlight,
   Image,
   PixelRatio
-} = require('react-native')
+} from 'react-native';
 
 var WidgetMixin = require('../mixins/WidgetMixin.js');
 var GiftedSpinner = require('react-native-gifted-spinner');
 
-module.exports = React.createClass({
+module.exports = createReactClass({
   mixins: [WidgetMixin],
   
   getDefaultProps() {
