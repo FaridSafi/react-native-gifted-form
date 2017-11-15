@@ -1,4 +1,5 @@
 import React from 'react';
+import createReactClass from 'create-react-class';
 import {
   View,
   Text,
@@ -7,7 +8,7 @@ import {
 
 const WidgetMixin = require('../mixins/WidgetMixin.js');
 
-module.exports = React.createClass({
+module.exports = createReactClass({
   mixins: [WidgetMixin],
 
   render() {

@@ -1,7 +1,8 @@
-var React = require('react');
-var {
+import React from 'react';
+import createReactClass from 'create-react-class';
+import {
   View, ListView, Text, TouchableHighlight, TextInput, Image, PixelRatio
-} = require('react-native')
+} from 'react-native';
 
 var WidgetMixin = require('../mixins/WidgetMixin.js');
 var OptionWidget = require('./OptionWidget.js');
@@ -260,7 +261,7 @@ var countries =
 ];
 
 
-module.exports = React.createClass({
+module.exports = createReactClass({
   mixins: [WidgetMixin],
 
   statics: {

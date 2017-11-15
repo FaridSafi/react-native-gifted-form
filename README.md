@@ -13,7 +13,7 @@ Form component for React Native.
 ```js
 var { GiftedForm, GiftedFormManager } = require('react-native-gifted-form');
 
-var FormComponent = React.createClass({
+var FormComponent = createReactClass({
   render() {
     return (
       <GiftedForm

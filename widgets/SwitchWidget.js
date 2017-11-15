@@ -1,15 +1,16 @@
-var React = require('react');
-var {
+import React from 'react';
+import createReactClass from 'create-react-class';
+import {
   View,
   Text,
   Switch,
   Platform,
   PixelRatio
-} = require('react-native')
+} from 'react-native';
 
 var WidgetMixin = require('../mixins/WidgetMixin.js');
 
-var GiftedSwitch = React.createClass({
+var GiftedSwitch = createReactClass({
   _getSwitch() {
     return (
       <Switch
@@ -28,7 +29,7 @@ var GiftedSwitch = React.createClass({
 
 
 
-module.exports = React.createClass({
+module.exports = createReactClass({
   mixins: [WidgetMixin],
 
   getDefaultProps() {
