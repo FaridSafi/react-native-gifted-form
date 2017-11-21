@@ -13,6 +13,7 @@ module.exports = createReactClass({
   getDefaultProps() {
     return {
       type: 'GroupWidget',
+      allowTextFontScaling: true,
       // @todo proptypes
     };
   },
@@ -36,6 +37,7 @@ module.exports = createReactClass({
       return (
           <View>
             <Text
+                allowFontScaling={this.props.allowTextFontScaling}
                 style={this.getStyle('headerTitle')}
                 {...this.props}
             >

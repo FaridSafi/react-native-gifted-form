@@ -35,6 +35,7 @@ module.exports = createReactClass({
   getDefaultProps() {
     return {
       type: 'SwitchWidget',
+      allowTextFontScaling: true,
     };
   },
 
@@ -44,7 +45,11 @@ module.exports = createReactClass({
         <View style={this.getStyle('row')}>
           {this._renderImage()}
 
-          <Text numberOfLines={1} style={this.getStyle('switchTitle')}>{this.props.title}</Text>
+          <Text
+            numberOfLines={1}
+            allowFontScaling={this.props.allowTextFontScaling}
+            style={this.getStyle('switchTitle')}
+          >{this.props.title}</Text>
           <View style={this.getStyle('switchAlignRight')}>
             <GiftedSwitch
               style={this.getStyle('switch')}

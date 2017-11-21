@@ -1040,6 +1040,7 @@ module.exports = createReactClass({
       onClose: () => {},
       code: 'alpha2',
       autoFocus: false,
+      allowTextFontScaling: true,
     };
   },
 
@@ -1835,9 +1836,11 @@ module.exports = createReactClass({
               }}
             />
 
-            <Text numberOfLines={1} style={{
-              flex: 1,
-            }}>{rowData.name}</Text>
+            <Text
+              numberOfLines={1}
+              allowFontScaling={this.props.allowTextFontScaling}
+              style={{flex: 1}}
+            >{rowData.name}</Text>
           </View>
         </TouchableHighlight>
       );
@@ -1866,9 +1869,11 @@ module.exports = createReactClass({
                 marginRight: 10,
               }}
             />
-            <Text numberOfLines={1} style={{
-              flex: 1,
-            }}>{rowData.name}</Text>
+            <Text
+              numberOfLines={1}
+              allowFontScaling={this.props.allowTextFontScaling}
+              style={{flex: 1}}
+            >{rowData.name}</Text>
           </View>
         </TouchableHighlight>
       );

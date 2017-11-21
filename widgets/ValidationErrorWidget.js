@@ -11,18 +11,20 @@ var WidgetMixin = require('../mixins/WidgetMixin.js');
 module.exports = createReactClass({
   mixins: [WidgetMixin],
 
-  
+
   getDefaultProps() {
     return {
       type: 'ValidationErrorWidget',
+      allowTextFontScaling: true,
     };
   },
-  
+
   render() {
     return (
       <View>
         <View style={this.getStyle('validationErrorRow')}>
           <Text
+            allowFontScaling={this.props.allowTextFontScaling}
             style={this.getStyle('validationError')}
             {...this.props}
           >
@@ -32,7 +34,7 @@ module.exports = createReactClass({
       </View>
     );
   },
-  
+
 
   defaultStyles: {
     validationErrorRow: {
@@ -45,5 +47,5 @@ module.exports = createReactClass({
       color: '#ff001A',
     },
   },
-  
+
 });

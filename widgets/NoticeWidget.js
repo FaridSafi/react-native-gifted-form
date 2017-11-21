@@ -11,18 +11,20 @@ var WidgetMixin = require('../mixins/WidgetMixin.js');
 
 module.exports = createReactClass({
   mixins: [WidgetMixin],
-  
+
   getDefaultProps() {
     return {
       type: 'NoticeWidget',
+      allowTextFontScaling: true,
     };
   },
-  
+
   render() {
     return (
       <View>
         <View style={this.getStyle('noticeRow')}>
           <Text
+            allowFontScaling={this.props.allowTextFontScaling}
             style={this.getStyle('noticeTitle')}
             {...this.props}
           >
@@ -32,7 +34,7 @@ module.exports = createReactClass({
       </View>
     );
   },
-  
+
   defaultStyles: {
     noticeRow: {
       paddingBottom: 10,
@@ -43,7 +45,6 @@ module.exports = createReactClass({
     noticeTitle: {
       fontSize: 13,
       color: '#9b9b9b',
-    },  
+    },
   },
 });
-
