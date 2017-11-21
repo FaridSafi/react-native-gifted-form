@@ -41,7 +41,7 @@ module.exports = createReactClass({
 
         name: this.props.name+'{'+val+'}',
         ref: this.props.name+'{'+val+'}',
-        value: val,
+        value: this.props.multiple ? false : val,
         unSelectAll: this.unSelectAll,
 
         multiple: this.props.multiple,
