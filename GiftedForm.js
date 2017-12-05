@@ -11,6 +11,7 @@ const TextInputWidget = require('./widgets/TextInputWidget');
 const TextAreaWidget = require('./widgets/TextAreaWidget');
 const SwitchWidget = require('./widgets/SwitchWidget');
 const SelectWidget = require('./widgets/SelectWidget');
+const SelectTypeaheadWidget = require('./widgets/SelectTypeaheadWidget');
 const OptionWidget = require('./widgets/OptionWidget');
 const SelectCountryWidget = require('./widgets/SelectCountryWidget');
 const DatePickerIOSWidget = require('./widgets/DatePickerIOSWidget');
@@ -35,6 +36,7 @@ const GiftedForm = createReactClass({
     TextAreaWidget,
     SwitchWidget,
     SelectWidget,
+    SelectTypeaheadWidget,
     OptionWidget,
     SelectCountryWidget,
     DatePickerIOSWidget,
