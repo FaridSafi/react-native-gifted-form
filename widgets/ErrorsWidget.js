@@ -11,6 +11,12 @@ const WidgetMixin = require('../mixins/WidgetMixin.js');
 module.exports = createReactClass({
   mixins: [WidgetMixin],
 
+  getDefaultProps() {
+      return {
+          type: 'ErrorsWidget',
+      }
+  },
+
   render() {
     var errors = this.props.form.state.errors;
     if (errors.length > 0) {
@@ -26,7 +32,7 @@ module.exports = createReactClass({
         </View>
       );
     }
-    return null;
+    return <View style={this.getStyle('errorEmptyContainer')} />;
   },
 
   defaultStyles: {
@@ -35,6 +41,9 @@ module.exports = createReactClass({
     },
     errorText: {
       color: '#ff0000',
+    },
+    errorEmptyContainer: {
+
     },
   },
 
