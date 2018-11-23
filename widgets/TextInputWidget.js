@@ -53,6 +53,7 @@ module.exports = createReactClass({
         <View style={this.getStyle(['rowContainer'])}>
           <View style={this.getStyle(['titleContainer'])}>
             {this._renderImage()}
+            {this._renderCustomValidationView()}
             <Text numberOfLines={1} style={this.getStyle(['textInputTitle'])}>{this.props.title}</Text>
           </View>
           
@@ -78,6 +79,7 @@ module.exports = createReactClass({
       <View style={this.getStyle(['rowContainer'])}>
         <View style={this.getStyle(['row'])}>
           {this._renderImage()}
+          {this._renderCustomValidationView()}
           {this._renderTitle()}
           <TextInput
             ref='input'

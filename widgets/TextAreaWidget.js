@@ -21,6 +21,7 @@ module.exports = createReactClass({
   render() {
     return (
       <View style={this.getStyle('textAreaRow')}>
+        {this._renderCustomValidationView()}
         <TextInput
           style={this.getStyle('textArea')}
           multiline={true}
