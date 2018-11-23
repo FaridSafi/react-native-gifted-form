@@ -240,6 +240,7 @@ module.exports = {
 
     return null;
   },
+
   _renderCustomValidationView() {
     var validators = null;
     if (this.props.displayValue) {
@@ -266,13 +267,12 @@ module.exports = {
     }
 
     const hasValidationErrors = this.state.validationErrorMessage !== null;
-    const hasImageProp = this.props.image !== null;
-    const isOptionWidget = this.props.type === 'OptionWidget'
+    const isOptionWidget = this.props.type === 'OptionWidget';
     const shouldShowValidationImage = this.props.validationImage === true;
 
     if (this.props.customValidationView) {
       const showValidation = hasValue && !isOptionWidget && shouldShowValidationImage && toValidate;
-      const isValid = !hasValidationErrors
+      const isValid = !hasValidationErrors;
       return this.props.customValidationView(showValidation, isValid)
     }
     return null;
