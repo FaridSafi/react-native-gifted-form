@@ -27,7 +27,7 @@ module.exports = createReactClass({
       return (
         <Image
           style={this.getStyle('checkmark')}
-          resizeMode={Image.resizeMode.contain}
+          resizeMode="contain"
           source={require('../icons/check.png')}
         />
       );

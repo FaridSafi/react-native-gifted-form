@@ -28,7 +28,7 @@ module.exports = createReactClass({
       return (
         <Image
           style={this.getStyle('disclosure')}
-          resizeMode={Image.resizeMode.contain}
+          resizeMode="contain"
           source={require('../icons/disclosure.png')}
         />
       );
