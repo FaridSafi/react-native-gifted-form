@@ -1857,7 +1857,7 @@ module.exports = createReactClass({
           }}>
             <Image
               key={rowData.alpha2+'Image'}
-              resizeMode={Image.resizeMode.contain}
+              resizeMode="contain"
               source={image}
               style={{
                 height: 30,

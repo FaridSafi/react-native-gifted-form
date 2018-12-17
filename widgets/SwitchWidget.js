@@ -43,6 +43,7 @@ module.exports = createReactClass({
       <View style={this.getStyle('rowContainer')}>
         <View style={this.getStyle('row')}>
           {this._renderImage()}
+          {this._renderCustomValidationView()}
 
           <Text numberOfLines={1} style={this.getStyle('switchTitle')}>{this.props.title}</Text>
           <View style={this.getStyle('switchAlignRight')}>

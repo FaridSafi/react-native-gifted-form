@@ -54,7 +54,7 @@ module.exports = createReactClass({
       return (
         <Image
           style={this.getStyle('disclosure')}
-          resizeMode={Image.resizeMode.contain}
+          resizeMode="contain"
           source={require('../icons/disclosure.png')}
         />
       );
@@ -114,7 +114,7 @@ module.exports = createReactClass({
                   marginLeft: 10,
                   tintColor: '#097881',
                 }}
-                resizeMode={Image.resizeMode.contain}
+                resizeMode="contain"
                 source={require('../icons/close.png')}
               />
             </TouchableOpacity>
@@ -139,7 +139,7 @@ module.exports = createReactClass({
                 marginRight: 10,
                 tintColor: '#097881',
               }}
-              resizeMode={Image.resizeMode.contain}
+              resizeMode="contain"
               source={require('../icons/check.png')}
             />
           </TouchableOpacity>
@@ -276,6 +276,8 @@ module.exports = createReactClass({
       >
         <View style={this.getStyle('row')}>
           {this._renderImage()}
+          {this._renderCustomValidationView()}
+
           <Text numberOfLines={1} style={this.getStyle('modalTitle')}>{this.props.title}</Text>
           <View style={this.getStyle('alignRight')}>
             <Text numberOfLines={1} style={this.getStyle('modalValue')}>{this.state.value}</Text>
