@@ -2,7 +2,7 @@
 
 [![npm downloads](https://img.shields.io/npm/dm/react-native-gifted-form.svg)](https://www.npmjs.com/package/@ptrang/react-native-gifted-form) [![npm version](https://img.shields.io/npm/v/react-native-gifted-form.svg)](https://www.npmjs.com/package/@ptrang/react-native-gifted-form) [![Latest GitHub tag](https://img.shields.io/github/tag/FaridSafi/react-native-gifted-form.svg)](https://github.com/ptrang/react-native-gifted-form)
 
-Form component for React Native. @0.1.4
+Form component for React Native. @0.1.5
 
 ![screenshot](https://raw.githubusercontent.com/FaridSafi/react-native-gifted-form/master/capture/signup.gif)
 
