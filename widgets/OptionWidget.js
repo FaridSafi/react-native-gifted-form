@@ -10,49 +10,47 @@ import {
 
 var WidgetMixin = require('../mixins/WidgetMixin.js');
 
-
-
 module.exports = createReactClass({
   mixins: [WidgetMixin],
-  
+
   getDefaultProps() {
-    return ({
+    return {
       // onChange: null,
-      type: 'OptionWidget',
-    });
+      type: 'OptionWidget'
+    };
   },
-  
+
   _renderCheckmark() {
     if (this.state.value === true) {
       return (
         <Image
           style={this.getStyle('checkmark')}
-          resizeMode={Image.resizeMode.contain}
+          resizeMode="contain"
           source={require('../icons/check.png')}
         />
       );
     }
     return null;
   },
-  
+
   _onClose() {
     if (this.props.multiple === false) {
       this.props.unSelectAll();
       this._onChange(true);
-      
+
       if (typeof this.props.onSelect === 'function') {
         // console.log('onSelect');
         this.props.onSelect(this.props.value);
       }
-      
+
       if (typeof this.props.onClose === 'function') {
         this.props.onClose(this.props.title, this.props.navigator);
       }
     } else {
-      this._onChange(!this.state.value)
+      this._onChange(!this.state.value);
     }
   },
-  
+
   render() {
     return (
       <View style={this.getStyle('rowContainer')}>
@@ -67,40 +65,39 @@ module.exports = createReactClass({
               {this.props.title}
             </Text>
             {this._renderCheckmark()}
-          </View>        
+          </View>
         </TouchableHighlight>
       </View>
     );
   },
-  
+
   defaultStyles: {
     rowImage: {
       height: 20,
       width: 20,
-      marginLeft: 10,
+      marginLeft: 10
     },
     checkmark: {
       width: 23,
       marginRight: 10,
-      marginLeft: 10,
+      marginLeft: 10
     },
     rowContainer: {
       backgroundColor: '#FFF',
       borderBottomWidth: 1 / PixelRatio.get(),
-      borderColor: '#c8c7cc',
+      borderColor: '#c8c7cc'
     },
     row: {
       flexDirection: 'row',
       height: 44,
-      alignItems: 'center',
+      alignItems: 'center'
     },
     underlayColor: '#c7c7cc',
     switchTitle: {
       fontSize: 15,
       color: '#000',
       flex: 1,
-      paddingLeft: 10,
-    },
-  },
+      paddingLeft: 10
+    }
+  }
 });
-
