@@ -22,6 +22,10 @@ module.exports = createReactClass({
     };
   },
 
+  _setSwitchValue(value) {
+    this._onChange(value);
+  }
+
   render() {
     return (
       <View style={this.getStyle('rowContainer')}>
@@ -33,6 +37,7 @@ module.exports = createReactClass({
           </Text>
           <View style={this.getStyle('switchAlignRight')}>
             <GiftedSwitch
+              ref="switch"
               style={this.getStyle('switch')}
               {...this.props}
               onValueChange={value => {
