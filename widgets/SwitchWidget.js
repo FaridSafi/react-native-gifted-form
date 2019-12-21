@@ -24,7 +24,7 @@ module.exports = createReactClass({
 
   _setSwitchValue(value) {
     this._onChange(value);
-  }
+  },
 
   render() {
     return (
