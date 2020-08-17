@@ -1,6 +1,6 @@
 {
-  "name": "react-native-gifted-form",
-  "version": "0.1.1",
+  "name": "@ptrang/react-native-gifted-form",
+  "version": "0.1.7",
   "description": "Form component for React Native",
   "main": "GiftedForm.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/FaridSafi/react-native-gifted-form.git"
+    "url": "git+https://github.com/ptrang/react-native-gifted-form.git"
   },
   "keywords": [
     "form",
@@ -18,12 +18,12 @@
     "ios",
     "android"
   ],
-  "author": "Farid from Safi",
+  "author": "clone of farid",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/FaridSafi/react-native-gifted-form/issues"
+    "url": "https://github.com/ptrang/react-native-gifted-form/issues"
   },
-  "homepage": "https://github.com/FaridSafi/react-native-gifted-form#readme",
+  "homepage": "https://github.com/ptrang/react-native-gifted-form#readme",
   "dependencies": {
     "apsl-react-native-button": "^3.1.0",
     "create-react-class": "^15.6.2",
@@ -34,5 +34,8 @@
     "react-native-google-places-autocomplete": "^1.3.6",
     "react-timer-mixin": "~0.13.3",
     "validator": "^9.0.0"
+  },
+  "directories": {
+    "example": "example"
   }
 }

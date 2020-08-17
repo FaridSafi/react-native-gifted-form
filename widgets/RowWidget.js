@@ -11,31 +11,30 @@ import {
 var WidgetMixin = require('../mixins/WidgetMixin.js');
 var TimerMixin = require('react-timer-mixin');
 
-
 module.exports = createReactClass({
   mixins: [TimerMixin, WidgetMixin],
-  
+
   getDefaultProps() {
     return {
       type: 'RowWidget',
       onPress: () => {},
-      disclosure: true,
+      disclosure: true
     };
   },
-  
+
   _renderDisclosure() {
     if (this.props.disclosure === true) {
       return (
         <Image
           style={this.getStyle('disclosure')}
-          resizeMode={Image.resizeMode.contain}
+          resizeMode="contain"
           source={require('../icons/disclosure.png')}
         />
       );
     }
     return null;
   },
-  
+
   render() {
     return (
       <View style={this.getStyle('rowContainer')}>
@@ -50,42 +49,44 @@ module.exports = createReactClass({
         >
           <View style={this.getStyle('row')}>
             {this._renderImage()}
-            <Text numberOfLines={1} style={this.getStyle('title')}>{this.props.title}</Text>
+            <Text numberOfLines={1} style={this.getStyle('title')}>
+              {this.props.title}
+            </Text>
             {this._renderDisclosure()}
           </View>
         </TouchableHighlight>
       </View>
     );
   },
-  
+
   defaultStyles: {
     rowImage: {
       height: 20,
       width: 20,
-      marginLeft: 10,
+      marginLeft: 10
     },
     rowContainer: {
       backgroundColor: '#FFF',
       borderBottomWidth: 1 / PixelRatio.get(),
-      borderColor: '#c8c7cc',
+      borderColor: '#c8c7cc'
     },
     row: {
       flexDirection: 'row',
       height: 44,
-      alignItems: 'center',
+      alignItems: 'center'
     },
     underlayColor: '#c7c7cc',
     disclosure: {
-      transform: [{rotate: '-90deg'}],
+      transform: [{ rotate: '-90deg' }],
       marginLeft: 10,
       marginRight: 10,
-      width: 11,
+      width: 11
     },
     title: {
       flex: 1,
       fontSize: 15,
       color: '#000',
-      paddingLeft: 10,
-    },
-  },
+      paddingLeft: 10
+    }
+  }
 });

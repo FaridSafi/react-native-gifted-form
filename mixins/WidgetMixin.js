@@ -2,14 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Image } from 'react-native';
 
-
 var GiftedFormManager = require('../GiftedFormManager');
 
 module.exports = {
-
   getInitialState() {
     return {
-      validationErrorMessage: null,
+      validationErrorMessage: null
     };
   },
 
@@ -27,7 +25,7 @@ module.exports = {
     onBlur: PropTypes.func,
     validateOnEmpty: PropTypes.bool,
     // If we want to store the state elsewhere (Redux store, for instance), we can use value and Form's onValueChange prop
-    value: PropTypes.any,
+    value: PropTypes.any
   },
 
   getDefaultProps() {
@@ -43,7 +41,7 @@ module.exports = {
       navigator: null,
       onFocus: () => {},
       onBlur: () => {},
-      validateOnEmpty: false,
+      validateOnEmpty: false
     };
   },
 
@@ -58,7 +56,7 @@ module.exports = {
     if (typeof formState !== 'undefined') {
       if (typeof formState.values[this.props.name] !== 'undefined') {
         this.setState({
-          value: formState.values[this.props.name],
+          value: formState.values[this.props.name]
         });
         this._validate(formState.values[this.props.name]);
       }
@@ -66,7 +64,10 @@ module.exports = {
   },
 
   componentWillReceiveProps(nextProps) {
-    if (typeof nextProps.value !== 'undefined' && nextProps.value !== this.props.value) {
+    if (
+      typeof nextProps.value !== 'undefined' &&
+      nextProps.value !== this.props.value
+    ) {
       this._onChange(nextProps.value);
     }
   },
@@ -92,7 +93,10 @@ module.exports = {
 
     for (let i = 0; i < styleNames.length; i++) {
       if (typeof this.props.formStyles[this.props.type] !== 'undefined') {
-        if (typeof this.props.formStyles[this.props.type][styleNames[i]] !== 'undefined') {
+        if (
+          typeof this.props.formStyles[this.props.type][styleNames[i]] !==
+          'undefined'
+        ) {
           styles.push(this.props.formStyles[this.props.type][styleNames[i]]);
         }
       }
@@ -108,7 +112,7 @@ module.exports = {
   },
 
   focus() {
-    this.refs.input && this.refs.input.focus()
+    this.refs.input && this.refs.input.focus();
   },
 
   _validate(value) {
@@ -117,10 +121,17 @@ module.exports = {
     }
 
     // @todo option for live validation ?
-    var validators = GiftedFormManager.getValidators(this.props.formName, this.props.name);
+    var validators = GiftedFormManager.getValidators(
+      this.props.formName,
+      this.props.name
+    );
     if (Array.isArray(validators.validate)) {
       if (validators.validate.length > 0) {
-        var validation = GiftedFormManager.validateAndParseOne(this.props.name, value, {validate: validators.validate, title: validators.title});
+        var validation = GiftedFormManager.validateAndParseOne(
+          this.props.name,
+          value,
+          { validate: validators.validate, title: validators.title }
+        );
         if (validation.isValid === false) {
           this.setState({
             validationErrorMessage: validation.message
@@ -158,7 +169,8 @@ module.exports = {
 
   // @todo options enable live checking
   _renderValidationError() {
-    let hasValue = typeof this.state.value !== 'undefined' && this.state.value !== '';
+    let hasValue =
+      typeof this.state.value !== 'undefined' && this.state.value !== '';
 
     if (this.props.validateOnEmpty) {
       hasValue = true;
@@ -168,7 +180,9 @@ module.exports = {
       return null;
     }
 
-    const hasValidationErrors = this.state.validationErrorMessage !== null && this.state.validationErrorMessage !== '';
+    const hasValidationErrors =
+      this.state.validationErrorMessage !== null &&
+      this.state.validationErrorMessage !== '';
 
     if (!hasValidationErrors) {
       return null;
@@ -187,9 +201,15 @@ module.exports = {
     var validators = null;
     if (this.props.displayValue) {
       // in case of modal widget
-      validators = GiftedFormManager.getValidators(this.props.formName, this.props.displayValue);
+      validators = GiftedFormManager.getValidators(
+        this.props.formName,
+        this.props.displayValue
+      );
     } else {
-      validators = GiftedFormManager.getValidators(this.props.formName, this.props.name);
+      validators = GiftedFormManager.getValidators(
+        this.props.formName,
+        this.props.name
+      );
     }
 
     let toValidate = false;
@@ -202,7 +222,8 @@ module.exports = {
     // @todo image delete_sign / checkmark should be editable via option
     // @todo options enable live validation
 
-    let hasValue = typeof this.state.value !== 'undefined' && this.state.value !== '';
+    let hasValue =
+      typeof this.state.value !== 'undefined' && this.state.value !== '';
 
     if (this.props.validateOnEmpty) {
       hasValue = true;
@@ -210,33 +231,41 @@ module.exports = {
 
     const hasValidationErrors = this.state.validationErrorMessage !== null;
     const hasImageProp = this.props.image !== null;
-    const isOptionWidget = this.props.type === 'OptionWidget'
+    const isOptionWidget = this.props.type === 'OptionWidget';
     const shouldShowValidationImage = this.props.validationImage === true;
 
-    if (hasValue && hasImageProp && !isOptionWidget && shouldShowValidationImage && toValidate) {
-      const imageSrc = hasValidationErrors ? require('../icons/delete_sign.png'):require('../icons/checkmark.png');
+    if (
+      hasValue &&
+      hasImageProp &&
+      !isOptionWidget &&
+      shouldShowValidationImage &&
+      toValidate
+    ) {
+      const imageSrc = hasValidationErrors
+        ? require('../icons/delete_sign.png')
+        : require('../icons/checkmark.png');
 
       return (
         <Image
           style={this.getStyle('rowImage')}
-          resizeMode={Image.resizeMode.contain}
+          resizeMode="contain"
           source={imageSrc}
         />
       );
     } else if (hasImageProp) {
       if (typeof this.props.image === 'object') {
-        return(this.props.image);
+        return this.props.image;
       }
 
       return (
         <Image
           style={this.getStyle('rowImage')}
-          resizeMode={Image.resizeMode.contain}
+          resizeMode="contain"
           source={this.props.image}
         />
       );
     }
 
     return null;
-  },
+  }
 };
